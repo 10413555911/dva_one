@@ -144,15 +144,12 @@ let mapdispatchToProps = dispatch => {
                 type: 'subject/condition',
                 payload: exam_shiti
             })
-<<<<<<< HEAD
         },
         datacomplie: (payload) => {
             dispatch({
                 type: 'subject/datacomplie',
                 payload
             })
-=======
->>>>>>> whp
         }
     }
 }

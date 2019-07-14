@@ -3,18 +3,10 @@ import {getToken} from '@/utils/index'
  
 // create an axios instance
 const service = axios.create({
-<<<<<<< HEAD
-  baseURL: 'http://10.1.5.58:7001/',
-  // withCredentials: true, // 跨域请求时发送 cookies
-  timeout: 5000 // request timeout
-})
-
-=======
   baseURL: 'http://169.254.32.10:7001/',
   // withCredentials: true, // 跨域请求时发送 cookies
   timeout: 5000 // request timeout
 })
->>>>>>> whp
 // request interceptor
 service.interceptors.request.use(
   config => {
