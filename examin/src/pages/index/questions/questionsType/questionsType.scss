@@ -1,0 +1,22 @@
+.wrap {
+  height: 437px;
+  padding: 15px;
+  background: #ffff;
+  border-radius: 13px;
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  border: 1px solid #ccc;
+}
+.main {
+  padding: 15px;
+  flex: 1;
+  flex-direction: column;
+}
+.from {
+  width: 100%;
+  flex: 1;
+}
+.button {
+  height: 60px;
+}
