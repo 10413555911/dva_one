@@ -5,11 +5,11 @@ import style from './IndexPage.scss'
 import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { Router, Route, Switch } from 'dva/router';
-import addQuestions from './addQuestions/addQuestions'
-import watchQuestions from './watchQuestions/watchQuestions'
-import questionsType from './questionsType/questionsType'
-import details from './watchQuestions/details/details'
-import compile from './watchQuestions/compile/compile'
+import addQuestions from './questions/addQuestions/addQuestions'
+import watchQuestions from './questions/watchQuestions/watchQuestions'
+import questionsType from './questions/questionsType/questionsType'
+import details from './questions/watchQuestions/details/details'
+import compile from './questions/watchQuestions/compile/compile'
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 function IndexPage(props) {
