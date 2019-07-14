@@ -9,13 +9,16 @@ import addQuestions from './questions/addQuestions/addQuestions'
 import watchQuestions from './questions/watchQuestions/watchQuestions'
 import questionsType from './questions/questionsType/questionsType'
 import details from './questions/watchQuestions/details/details'
-import compile from './questions/watchQuestions/compile/compile'
+import addUser from "./user/addUser/adduser"
+import showUser from "./user/showUser/showuser"
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
+
 function IndexPage(props) {
-  let headerText = () => {
-    let text = props.location.pathname;
-    switch (text) {
+  console.log("index页",props.location.pathname)
+  let headerText=()=>{
+  let text=props.location.pathname;
+    switch(text){
       case "/index/addQuestions":
         return "添加试题";
       case "/index/questionsType":
@@ -42,9 +45,8 @@ function IndexPage(props) {
               <Menu.Item key="3"><NavLink to='/index/watchQuestions'>查看试题</NavLink></Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" title={<span><Icon type="team" /><span>用户管理</span></span>}>
-              <Menu.Item key="4"><NavLink to='/index/addQuestions'>添加试题</NavLink></Menu.Item>
-              <Menu.Item key="5"><NavLink to='/index/questionsType'>试题分类</NavLink></Menu.Item>
-              <Menu.Item key="6"><NavLink to='/index/watchQuestions'>查看试题</NavLink></Menu.Item>
+              <Menu.Item key="4"><NavLink to='/index/adduser'>添加用户</NavLink></Menu.Item>
+              <Menu.Item key="5"><NavLink to='/index/showUser'>展示用户</NavLink></Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
@@ -56,11 +58,17 @@ function IndexPage(props) {
             {/* 路由视口存放 */}
             <Switch>
               {/* 添加试题页面 */}
-              <Route path="/index/addQuestions" component={addQuestions} />
+              <Route path="/index/addQuestions" component={addQuestions} /> 
               <Route path="/index/questionsType" component={questionsType} />
               <Route path="/index/watchQuestions" component={watchQuestions} />
               <Route path="/index/details" component={details} />
-              <Route path="/index/compile" component={compile} />
+              {/* 用户管理 */}
+              <Route path="/index/adduser" component={addUser} />
+              <Route path="/index/showuser" component={showUser} />
+
+              {/* <Route path="/index/details" component={details} /> */}
+              {/* <Route path="/index/questionsType" component={questionsType} />
+              <Route path="/index/addQuestions" component={addQuestions} /> */}
             </Switch>
           </Content>
         </Layout>
