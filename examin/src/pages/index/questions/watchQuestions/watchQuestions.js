@@ -19,7 +19,6 @@ function watchQuestions(props) {
     const [exam_shiti, setexam_shiti] = useState('')
     const [exam_type, setexam_type] = useState('')
     const [Index, setIndex] = useState(0);
-<<<<<<< HEAD
     let handclick = () => {
         props.findchange({ exam_id: exam_shiti, questions_type_id: exam_type })
     }
@@ -29,10 +28,8 @@ function watchQuestions(props) {
         props.history.push('/index/compile?id=' + item.questions_id)
     }
     let chengeIndex = (i) => {
-=======
     const [subject_id, setId] = useState();
     let chengeIndex=(i,id)=>{
->>>>>>> d85aeada782700e9dee4738facf52bd7d73fed9b
         setIndex(i)
         console.log(id)
         setId(id)
