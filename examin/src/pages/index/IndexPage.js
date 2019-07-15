@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'dva';
 import Headers from '@/components/header/header'
 import style from './IndexPage.scss'
-import { Layout, Menu, Icon ,Sider} from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { Router, Route, Switch } from 'dva/router';
 import compile from './questions/watchQuestions/compile/compile'
