@@ -63,6 +63,7 @@ function IndexPage(props) {
               <Route path="/index/details" component={details} />
               <Route path="/index/compile" component={compile} />
               <Route path="/index/addExam" component={addExam} />
+
             </Switch>
           </Content>
         </Layout>
