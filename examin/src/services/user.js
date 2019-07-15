@@ -24,3 +24,7 @@ export function view_authority(){
 export function view_authority_relation(){
     return request.get("/user/identity_view_authority_relation")
 }
+//添加用户
+export function adduser(parames){
+    return request.post("/user",parames)
+}

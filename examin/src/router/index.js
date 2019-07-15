@@ -1,65 +1,91 @@
 import addQuestions from "../pages/index/questions/addQuestions/addQuestions"
-// import questionsType from "../pages/index/questionsType"
-// import watchQuestions from "../pages/index/watchQuestions"
-// import addUser from "../pages/index/addUser"
-// import showUser from "../pages/index/showUser"
-// import addExam from "../pages/index/addExam"
-// import list from "../pages/index/list"
-// import grade from "../pages/index/grade"
-// import room from "../pages/index/room"
-// import student from "../pages/index/student"
-// import classlist from "../pages/index/classlist"
-const route=[
+import questionsType from "../pages/index/questions/questionsType/questionsType"
+import watchQuestions from "../pages/index/questions/watchQuestions/watchQuestions"
+import addUser from "../pages/index/user/addUser/adduser"
+import showUser from "../pages/index/user/showUser/showuser"
+const router=[
     {
-        path:"/index/addQuestions",
-        component:addQuestions,
-        title:'添加试题'
+        type:"试题管理",
+        children:[
+            {
+                path:"/index/addQuestions",
+                component:addQuestions,
+                title:"添加试题"
+            },
+            {
+                path:"/index/questionsType",
+                component: questionsType,
+                title:"试题分类"
+            },
+            {
+                path:"/index/watchQuestions",
+                component:watchQuestions,
+                title:"查看试题"
+            }
+        ]
     },
-    // {
-    //     path:"/home/questionsType",
-    //     component: questionsType
-    // },
-    // {
-    //     path:"/home/watchQuestions",
-    //     component:watchQuestions
-    // },
-    // {
-    //     path:"/home/addQuestions",
-    //     component:addQuestions
-    // },
-    // {
-    //     path:"/home/addUser",
-    //     component:addUser
-    // },
-    // {
-    //     path:"/home/showUser",
-    //     component:showUser
-    // },
-    // {
-    //     path:"/home/addExam",
-    //     component:addExam
-    // },
-    // {
-    //     path:"/home/list",
-    //     component:list
-    // },
-    // {
-    //     path:"/home/grade",
-    //     component:grade
-    // },
-    // {
-    //     path:"/home/room",
-    //     component:room
-    // },
+    {
+        type:"用户管理",
+        children:[
+            {
+                path:"/index/addUser",
+                component:addUser,
+                title:"添加用户"
+            },
+            {
+                path:"/index/showUser",
+                component: showUser,
+                title:"用户展示"
+            }
+        ]
+    },
+    {
+        type:"考试管理",
+        children:[
+            {
+                path:"/index/watchQuestions",
+                component:watchQuestions,
+                title:"添加考试" 
+            },
+            {    
+                path:"/index/watchQuestions",
+                component:watchQuestions,
+                title:"添加考试" 
+            }
+        ]
+    },
+    {
+       type:"班级管理",
+       children:[
+           {
+                path:"/index/showUser",
+                component:showUser,
+                title:"班级管理"
+            },
+           {
+                path:"/index/showUser",
+                component:showUser,
+                title:"班级管理"
+            },
+            {
+                path:"/index/showUser",
+                component:showUser,
+                title:"班级管理"
+            }
+       ]
+    },
+    {
+        type:"阅卷管理",
+        children:[
+            {
+                path:"/index/showUser",
+                component:showUser,
+                title:"阅卷管理"
+            }
+        ]
+    }
+   
 
-    // {
-    //     path:"/home/student",
-    //     component:student
-    // },
-    // {
-    //     path:"/home/classlist",
-    //     component:classlist
-    // }
 
 ]
-export default route;
+export default router;
