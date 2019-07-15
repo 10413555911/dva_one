@@ -5,29 +5,37 @@ import { Form, InputNumber, Input, Select, DatePicker, Button } from 'antd';
 const { Option } = Select;
 function addExam(props) {
   let { examTypeDate, TypeList } = props
-  const { getFieldDecorator } = props.form;
+  const { getFieldDecorator } = props.form; //高阶组价方法
   useEffect(() => {
     props.examType()   //考试类型
     props.subject()   //课程
   }, [])
-  let submit = () => {   //点击提交按钮  134566
-    handleSubmit()
+  let submit = () => {   //点击提交按钮 
+    handleSubmit()  //调用提交接口
   }
   let handleSubmit = () => {
     props.form.validateFields((err, values) => {
-
+      props.history.push('/index/examDetails')  //跳转详情页
+      props.addexam({
+        start_time:start,
+        end_time:end,
+        number:values.number,
+        subject_id:values.subject_id,
+        exam_id:values.exam_id,
+        title:values.titleText
+      })
     })
   }
-
+  const [start, start_time_async] = useState()
+  const [end, end_time_async] = useState()
   let end_time = (e, timestamp) => {  //结束时间的时间戳
     var date = new Date(timestamp)   //
-    var time1 = date.getTime();
+    start_time_async(date.getTime());
   }
   let start_time = (e, timestamp) => {  //开始时间的时间戳
     var date = new Date(timestamp)   //
-    var time2 = date.getTime();
+    end_time_async(date.getTime());
   }
-
   return (
     <Form layout="inline" className={styles.content} onSubmit={handleSubmit}>
       <div className={styles.main}>
@@ -49,7 +57,7 @@ function addExam(props) {
           <div><span style={{ color: 'red' }}>* </span><span> 请选择考试类型:</span></div>
           <div className={styles.select}>
             <Form.Item>
-              {getFieldDecorator('questions_type_id', {
+              {getFieldDecorator('exam_id', {
                 validateTrigger: "onBlur",
                 rules: [{ required: true, message: "题目类型必选" }],
               })(
@@ -68,7 +76,7 @@ function addExam(props) {
           <div><span style={{ color: 'red' }}>* </span><span> 请选择课程:</span></div>
           <div className={styles.select}>
             <Form.Item>
-              {getFieldDecorator('qwe', {
+              {getFieldDecorator('subject_id', {
                 rules: [{ required: true, message: "题目类型必选" }],
                 initialValue: ""
               })(
@@ -128,7 +136,7 @@ function addExam(props) {
   )
 }
 const mapStateToProps = state => {
-  return { ...state.subject }
+  return { ...state.subject,...state.exam }
 }
 const mapDispatchToPorps = dispatch => {
   return {
@@ -142,6 +150,12 @@ const mapDispatchToPorps = dispatch => {
         type: 'subject/subject'
       })
     },
+    addexam: (payload) => { //调用添加试题接口
+      dispatch({
+        type: 'exam/addexam',
+        payload
+      })
+    }
   }
 }
 export default connect(mapStateToProps, mapDispatchToPorps)(Form.create()(addExam))
