@@ -4,7 +4,7 @@ import { Radio, Select, Button } from 'antd';
 import style from './watchQuestions.scss'
 const { Option } = Select;
 function watchQuestions(props) {
-    let { TypeList, examTypeDate, subjectDataType, All } = props;
+    let { TypeList, examTypeDate, subjectDataType,Alldatacomplie, All } = props;
     useEffect(() => {
         props.subjectDate() // 
         props.examType() // 获取所有日周月考
@@ -25,7 +25,7 @@ function watchQuestions(props) {
     //点击跳转编辑页面
     let Changepage = (item) => {
         props.datacomplie(item)
-        props.history.push('/index/compile?id=' + item.questions_type_id)
+        props.history.push('/index/compile?id=' + item.questions_id)
     }
     let chengeIndex = (i) => {
         setIndex(i)

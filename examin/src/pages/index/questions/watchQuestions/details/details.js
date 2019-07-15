@@ -3,29 +3,35 @@ import { connect } from 'dva';
 import styles from './details.scss';
 import ReactMarkdown from 'react-markdown';
 function details(props) {
-    let { Objs } = props
+    let { Objs,All } = props
+    useEffect(()=>{
+       props.data({questions_id:props.location.search.split('=')[1]})    //调用查看试题的接口
+    },[])
+    if (!All.length){
+        return null;
+    }
     return <div className={styles.worp_box}>
         <div className={styles.box}>
             <div className={styles.center}>
                 <div className={styles.left}>
-                    <span>出题人:{Objs.user_name}</span>
+                    <span>出题人:{All[0].exam_name}</span>
                     <h4>出题信息</h4>
                     <div className={styles.small_Item}>
-                        <span>{Objs.exam_name}</span>
-                        <span>{Objs.subject_text}</span>
-                        <span>{Objs.questions_type_text}</span>
+                        <span>{All[0].exam_name}</span>
+                        <span>{All[0].subject_text}</span>
+                        <span>{All[0].questions_type_text}</span>
                     </div>
                     <div>
-                        <h4>{Objs && Objs.title}</h4>
+                        <h4>{All[0] && All[0].title}</h4>
                         <div className={styles.ti_text}>
-                            <ReactMarkdown source={Objs.questions_stem} />
+                            <ReactMarkdown source={All[0].questions_stem} />
                         </div>
                     </div>
                 </div>
                 {/* 答案 */}
                 <div className={styles.right}>
                     <div>
-                    <ReactMarkdown source={Objs.questions_answer} />  
+                    <ReactMarkdown source={All[0].questions_answer} />  
                     </div>
                 </div>
             </div>
@@ -38,5 +44,14 @@ const mapStateToProps = state => {
         ...state.subject
     }
 }
-
-export default connect(mapStateToProps)(details)
+const mapDispatchProps = dispatch => {
+    return {
+        data: (payload) => {
+            dispatch({
+                type: 'subject/condition',
+                payload
+            })
+        },
+    }
+}
+export default connect(mapStateToProps,mapDispatchProps)(details)

@@ -10,6 +10,7 @@ import watchQuestions from './questions/watchQuestions/watchQuestions'
 import questionsType from './questions/questionsType/questionsType'
 import details from './questions/watchQuestions/details/details'
 import compile from './questions/watchQuestions/compile/compile'
+import addExam from './examination/addExam/addExam'
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 function IndexPage(props) {
@@ -41,8 +42,8 @@ function IndexPage(props) {
               <Menu.Item key="2"><NavLink to='/index/questionsType'>试题分类</NavLink></Menu.Item>
               <Menu.Item key="3"><NavLink to='/index/watchQuestions'>查看试题</NavLink></Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="team" /><span>用户管理</span></span>}>
-              <Menu.Item key="4"><NavLink to='/index/addQuestions'>添加试题</NavLink></Menu.Item>
+            <SubMenu key="sub2" title={<span><Icon type="team" /><span>考试管理</span></span>}>
+              <Menu.Item key="4"><NavLink to='/index/addExam'>添加考试</NavLink></Menu.Item>
               <Menu.Item key="5"><NavLink to='/index/questionsType'>试题分类</NavLink></Menu.Item>
               <Menu.Item key="6"><NavLink to='/index/watchQuestions'>查看试题</NavLink></Menu.Item>
             </SubMenu>
@@ -61,6 +62,7 @@ function IndexPage(props) {
               <Route path="/index/watchQuestions" component={watchQuestions} />
               <Route path="/index/details" component={details} />
               <Route path="/index/compile" component={compile} />
+              <Route path="/index/addExam" component={addExam} />
             </Switch>
           </Content>
         </Layout>

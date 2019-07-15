@@ -6,12 +6,13 @@ import Editor from 'for-editor';
 const { Option } = Select;
 function compile(props) {
   const { getFieldDecorator } = props.form;
-  let { examTypeDate, subjectDataType, TypeList, userIds, Alldatacomplie } = props
+  let { examTypeDate, subjectDataType, TypeList, userIds, All } = props
   useEffect(() => {
     props.examType()
     props.subject()
     props.subjectData()
     props.userId()
+    props.data({ questions_id: props.location.search.split('=')[1] })
   }, []);
   const [visibles, showVisible] = useState(false)
   function submit() {
@@ -20,16 +21,18 @@ function compile(props) {
   let handleSubmit = (e) => {
     props.form.validateFields((err, values) => {
       props.update({
+        questions_id: props.location.search.split('=')[1],
         questions_type_id: values.questions_type_id,
         questions_stem: values.value,
         subject_id: values.subject_id,
-        exam_id: values.exam_id,
-        user_id: userIds,
         questions_answer: values.valueowen,
-        title:values.titleText
+        title: values.titleText
       })
       showVisible(true)
     });
+  }
+  if (!All.length) {
+    return null;
   }
   return (
     <Form onSubmit={handleSubmit} className={styles.content}>
@@ -42,7 +45,7 @@ function compile(props) {
               {getFieldDecorator('titleText', {
                 validateTrigger: "onBlur",
                 rules: [{ required: true, message: '标题不能为空' }],
-                initialValue: Alldatacomplie.title
+                initialValue: All[0].title
               })(
                 <Input
                   placeholder="请输入题目标题，不能超过20字"
@@ -53,7 +56,7 @@ function compile(props) {
             <Form.Item>
               {getFieldDecorator('value', {
                 rules: [{ required: true, message: "答案信息必填" }],
-                initialValue: Alldatacomplie.questions_stem,
+                initialValue:All[0].questions_stem,
               })(
                 <Editor height='auto' />
               )}
@@ -64,7 +67,7 @@ function compile(props) {
             <Form.Item>
               {getFieldDecorator('exam_id', {
                 rules: [{ required: true, message: "题目类型必选" }],
-                initialValue: Alldatacomplie.exam_name
+                initialValue:All[0].exam_name
               })(
                 <Select style={{ width: 120 }}>
                   {
@@ -81,7 +84,7 @@ function compile(props) {
             <Form.Item>
               {getFieldDecorator('subject_id', {
                 rules: [{ required: true, message: "题目类型必选" }],
-                initialValue: Alldatacomplie.subject_text
+                initialValue:All[0].subject_text
               })(
                 <Select style={{ width: 120 }}>
                   {
@@ -98,7 +101,7 @@ function compile(props) {
             <Form.Item>
               {getFieldDecorator('questions_type_id', {
                 rules: [{ required: true, message: "题目类型必选" }],
-                initialValue: Alldatacomplie.questions_type_text
+                initialValue:All[0].questions_type_text
               })(
                 <Select style={{ width: 120 }}>
                   {
@@ -116,7 +119,7 @@ function compile(props) {
             <Form.Item>
               {getFieldDecorator('valueowen', {
                 rules: [{ required: true, message: "答案信息必填" }],
-                initialValue: Alldatacomplie.questions_answer,
+                initialValue: All[0].questions_answer,
               })(
                 <Editor height='auto' />
               )}
@@ -126,7 +129,7 @@ function compile(props) {
         </div>
       </div>
       <Modal
-        title="确定要修改？"  visible={visibles}  onCancel={()=>showVisible()}    onOk={()=>showVisible(false)}></Modal>
+        title="确定要修改？" visible={visibles} onCancel={() => showVisible()} onOk={() => showVisible(false)}></Modal>
     </Form>
   );
 }
@@ -155,9 +158,16 @@ const mapDispatchToPorps = dispatch => {
         type: 'subject/userInfo'
       })
     },
-    update: (payload) => {   
+    update: (payload) => {   ///!!!!
+      console.log(payload)
+      // dispatch({
+      //   type: 'subject/update',
+      //   payload
+      // })
+    },
+    data: (payload) => {
       dispatch({
-        type: 'subject/update',
+        type: 'subject/condition',
         payload
       })
     },

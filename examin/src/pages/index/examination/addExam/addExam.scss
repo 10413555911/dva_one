@@ -1,0 +1,51 @@
+:global {
+  .DatePicker {
+    flex: 1;
+  }
+}
+.content {
+  width: 100%;
+  background: #ffffff;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-sizing: border-box;
+  display: flex;
+  padding-left: 10px;
+  flex-direction: column;
+}
+.main {
+  padding: 15px;
+}
+.every {
+  font-size: 15px;
+  color: black;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  div:nth-child(2) {
+    align-items: center;
+    width: 400px;
+    input {
+      width: 300px;
+    }
+  }
+}
+.time {
+  display: flex;
+  .DatePicker {
+    width: 40%;
+  }
+}
+.button {
+  margin-top: 40px;
+}
+.select {
+  margin-top: 10px;
+  display: flex;
+  div {
+    flex: 1;
+  }
+}
+.tiems_start_end {
+  display: flex;
+}

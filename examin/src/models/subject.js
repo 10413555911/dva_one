@@ -40,12 +40,10 @@ export default {
                 type: 'ClickUpdata',
                 payload
             })
-        }
-        ,
-        //获取全部试题
+        },
+        //获取按条件全部试题
         *condition({ payload }, { call, put }) {
             let data = yield call(condition, payload)
-            console.log(data)
             yield put({
                 type: 'allQuestions_async',
                 payload: data.data
@@ -78,6 +76,7 @@ export default {
         //获取所有的试题
         *allQuestions({ payload }, { call, put }) {
             let data = yield call(allQuestions)
+            console.log(data)
             yield put({
                 type: 'allQuestions_async',
                 payload: data.data
@@ -92,8 +91,9 @@ export default {
         },
         //编辑页
         *update({ payload }, { call, put }) {
+          yield  console.log(payload)
             let data = yield update(payload)
-            console.log(data)
+            console.log(data,'q')
         },
     },
 
