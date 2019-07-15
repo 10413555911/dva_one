@@ -7,7 +7,6 @@ const service = axios.create({
   // withCredentials: true, // 跨域请求时发送 cookies
   timeout: 5000 // request timeout
 })
-
 // request interceptor
 service.interceptors.request.use(
   config => {
