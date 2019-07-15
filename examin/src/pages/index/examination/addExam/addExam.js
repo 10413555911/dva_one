@@ -10,7 +10,7 @@ function addExam(props) {
     props.examType()   //考试类型
     props.subject()   //课程
   }, [])
-  let submit = () => {   //点击提交按钮
+  let submit = () => {   //点击提交按钮  134566
     handleSubmit()
   }
   let handleSubmit = () => {
