@@ -5,11 +5,6 @@ import style from './IndexPage.scss'
 import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { Router, Route, Switch } from 'dva/router';
-import compile from './questions/watchQuestions/compile/compile'
-import addExam from './examination/addExam/addExam'
-import addUser from "./user/addUser/adduser"
-import showUser from "./user/showUser/showuser"
-
 import router from "../../router/index"
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -51,7 +46,7 @@ function IndexPage(props) {
                     {
                       item.children.map((item,i)=>
                         {
-                          return <Menu.Item key={i}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item>
+                          return <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item>
                         }
                       )
                     }
@@ -68,7 +63,6 @@ function IndexPage(props) {
           <Content className={style.content}>
             {/* 路由视口存放 */}
             <Switch>
-
               {
                 routerarr.map((item,i)=>
                   <Route key={i} path={item.path} component={item.component} />
