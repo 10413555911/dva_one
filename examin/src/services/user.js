@@ -28,3 +28,10 @@ export function view_authority_relation(){
 export function adduser(parames){
     return request.post("/user",parames)
 }
+export function addidentity(payload){
+    console.log(payload)
+    return request.get("/user/identity/edit",{parames:payload})
+}
+export function authorityApi(parames){
+    return request.get('/user/authorityApi/edit',parames)
+}

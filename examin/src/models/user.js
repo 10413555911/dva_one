@@ -1,4 +1,4 @@
-import {getUserdata,getidentity,api_authority,api_authority_relation,view_authority,view_authority_relation,adduser} from "../services/user"
+import {getUserdata,getidentity,api_authority,api_authority_relation,view_authority,view_authority_relation,adduser,addidentity,authorityApi} from "../services/user"
 export default {
     namespace: 'user',
     state: {
@@ -50,13 +50,28 @@ export default {
       },
       //adduser
       *adduser({ payload }, { call, put }){
-        console.log(111)
           let data=yield call(adduser,payload);
-          console.log("user...",data)
           yield put({
             type:"addUser",
             payload:data
           })
+      },
+      //添加身份
+      *addidentity({ payload }, { call, put }){
+        let data=yield call(addidentity,payload);
+        console.log("user...",data)
+        yield put({
+          type:"addIdentity",
+          payload:data
+        })
+      },
+      //添加api接口权限
+      *authorityApi({ payload }, { call, put }){
+        let data=yield call(authorityApi,payload);
+        yield put({
+          type:"addauthorityApi",
+          payload:data
+        })
       }
     },
   
@@ -80,6 +95,12 @@ export default {
           return { ...state, view_identity:data};
         },
         addUser(state, {payload}){
+          return { ...state, payload};
+        },
+        addIdentity(state, {payload}){
+          return { ...state, payload};
+        },
+        addauthorityApi(state, {payload}){
           return { ...state, payload};
         }
     },

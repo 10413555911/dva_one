@@ -2,6 +2,9 @@ import React,{useEffect,useState} from "react"
 import {connect} from "dva"
 import style from  "./adduser.scss"
 import {Input, Select, Layout,Button ,Form, Modal,Tabs,Table} from "antd"
+import Tablescom from "@/components/Tablescom/index"
+import Tablescom2 from "@/components/Tablescom2/index"
+import Tablescom3 from "@/components/Tablescom3/index"
 const { Header, Footer, Sider, Content } = Layout;
 const { Option } = Select;
 const { TabPane } = Tabs;
@@ -9,17 +12,16 @@ function adduser(props){
     useEffect(()=>{
         props.getUserdata()
         props.getidentity()
+        props.view_authority()//视图权限接口
+        props.api_authority()//api接口权限
+        props.view_authority_relation()//身份视图接口权限
     },[])
     let [iconLoading,setloading]=useState(false);
     const { getFieldDecorator } =props.form;
-    let handleSubmit = e => {
+    let handleSubmituser = e => {
         e.preventDefault();
         props.form.validateFields((err, values) => {
           if (values.username !=="" && values.userpwd !=="") {
-              console.log({
-                user_name:values.username,
-                user_pwd:values.userpwd
-            })
             props.adduser({
                 user_name:values.username,
                 user_pwd:values.userpwd,
@@ -28,234 +30,45 @@ function adduser(props){
           }  
         })
     }
-    //console.log(props)
-    const {userlist,identitylist}=props;
+    let handleSubmitupdata=e=>{
+        e.preventDefault();
+        props.form.validateFields((err, values) => {
+            if(values){
+                console.log(values)
+            }
+        })
+    }
+    let handleSubmitidentity=e=>{
+        e.preventDefault();
+        props.form.validateFields((err, values) => {
+            if(values){
+                console.log(e)
+            }
+        })
+    }
+    const {userlist,identitylist,viewdata,apilist,view_identity}=props;
     return(
         <div className={style.user_wrap}>
             <Content className={style.content}>
                 <div className={style.user_box}>
-                    <Tabs defaultActiveKey="1" animated={false} type="card">
-                        <TabPane tab={<Button>添加用户</Button>} key="1" >
-                            <Form onSubmit={(e)=>handleSubmit(e)}>
-                                <Form.Item>
-                                    {getFieldDecorator('userpwd', {
-                                        rules: [
-                                            { required: true, message: '密码不能为空' },
-                                            { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.]).*$/, message: '数据有误' }
-                                        ],
-                                    })(
-                                        <Input
-                                        placeholder="请输入用户名"
-                                        />
-                                    )}
-                                </Form.Item>
-                                <Form.Item>
-                                    {getFieldDecorator('username', {
-                                        rules: [
-                                            { required: true, message: '用户名不能为空' },
-                                            { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.]).*$/, message: '数据有误' }
-                                        ],
-                                    })(
-                                        <Input
-                                        placeholder="请输入密码"
-                                        />
-                                    )}
-                                </Form.Item>
-                                <Form.Item>
-                                {getFieldDecorator('identityid', {
-                                    rules: [{ required: true, message: "id类型必选" }],
-                                    initialValue: "请选择身份id"
-                                    })(
-                                        <Select style={{ width: 120 }}>
-                                            {
-                                                identitylist&&identitylist.map(item=>
-                                                    <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
-                                                )
-                                            }
-                                        </Select>
-                                    )}
-                                </Form.Item>
-                                <div className={style.btn_box}>
-                                <Form.Item>
-                                    <Button
-                                        type="primary"
-                                        htmlType="submit"
-                                        loading={iconLoading}
-                                        >
-                                        确定
-                                    </Button>
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <Button>
-                                            重置
-                                        </Button>
-                                    </Form.Item>  
-                                </div>
-                            </Form> 
-                        </TabPane>
-                        <TabPane tab={<Button>更新用户</Button>} key="2">
-                            <Form >
-                                <Form.Item>
-                                {getFieldDecorator('exam_id', {
-                                    rules: [{ required: true, message: "id类型必选" }],
-                                    initialValue: "请选择身份id"
-                                    })(
-                                        <Select style={{ width: 120 }}>
-                                            {
-                                                userlist&&userlist.map(item=>
-                                                    <Option value={item.user_name} key={item.user_id}>{item.user_name}</Option>
-                                                )
-                                            }
-                                            
-                                        </Select>
-                                    )}
-                                </Form.Item>
-                                <Form.Item>
-                                    {getFieldDecorator('username', {
-                                        validateTrigger: "onBlur",
-                                        rules: [{ required: true, message: '密码不能为空' }],
-                                    })(
-                                        <Input
-                                        placeholder="请输入密码"
-                                        />
-                                    )}
-                                </Form.Item>
-                                <Form.Item>
-                                    {getFieldDecorator('userpwd', {
-                                        validateTrigger: "onBlur",
-                                        rules: [{ required: true, message: '用户名不能为空' }],
-                                    })(
-                                        <Input
-                                        placeholder="请输入姓名"
-                                        />
-                                    )}
-                                </Form.Item>
-                                <Form.Item>
-                                {getFieldDecorator('exam_id', {
-                                    rules: [{ required: true, message: "id类型必选" }],
-                                    initialValue: "请选择身份id"
-                                    })(
-                                        <Select style={{ width: 120 }}>
-                                             {
-                                                identitylist&&identitylist.map(item=>
-                                                    <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
-                                                )
-                                            }
-                                        </Select>
-                                    )}
-                                </Form.Item>
-                                <div className={style.btn_box}>
-                                    <Form.Item>
-                                        <Button
-                                            type="primary"
-                                            loading={iconLoading}
-                                            >
-                                            确定
-                                        </Button>
-                                        </Form.Item>
-                                        <Form.Item>
-                                            <Button>
-                                                重置
-                                            </Button>
-                                    </Form.Item>  
-                                </div>
-                            </Form> 
-                        </TabPane>
-                    </Tabs>
+                    <Tablescom 
+                        identitylist={identitylist}
+                        userlist={userlist}
+                    />
                 </div>
                 <div className={style.user_box}>
-                    <Button>添加身份</Button>
-                    <Form onSubmit={(e)=>handleSubmit(e)}>
-                        <Form.Item>
-                            {getFieldDecorator('add', {
-                                rules: [
-                                    { required: true, message: '密码不能为空' },
-                                    { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.]).*$/, message: '数据有误' }
-                                ],
-                            })(
-                                <Input
-                                placeholder="请输入用户名"
-                                />
-                            )}
-                        </Form.Item>
-                        <div className={style.btn_box}>
-                            <Form.Item>
-                                <Button
-                                    type="primary"
-                                    loading={iconLoading}
-                                    >
-                                    确定
-                                </Button>
-                                </Form.Item>
-                                <Form.Item>
-                                    <Button>
-                                        重置
-                                    </Button>
-                            </Form.Item>  
-                        </div>
-                    </Form>
-                    
+                    <Tablescom2/>
                 </div>
                 <div className={style.user_box}>
-                    <Button>添加api接口权限</Button>
-                    <Form.Item>
-                        {getFieldDecorator('add', {
-                            rules: [
-                                { required: true, message: '密码不能为空' },
-                                { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.]).*$/, message: '数据有误' }
-                            ],
-                        })(
-                            <Input
-                            placeholder="请输入用户名"
-                            />
-                        )}
-                    </Form.Item>
-                    <Form.Item>
-                        {getFieldDecorator('add', {
-                            rules: [
-                                { required: true, message: '密码不能为空' },
-                                { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.]).*$/, message: '数据有误' }
-                            ],
-                        })(
-                            <Input
-                            placeholder="请输入用户名"
-                            />
-                        )}
-                    </Form.Item>
-                    <Form.Item>
-                        {getFieldDecorator('add', {
-                            rules: [
-                                { required: true, message: '密码不能为空' }
-                            ],
-                        })(
-                            <Input
-                            placeholder="请输入用户名"
-                            />
-                        )}
-                    </Form.Item>
-                    <div className={style.btn_box}>
-                        <Form.Item>
-                            <Button
-                                type="primary"
-                                loading={iconLoading}
-                                >
-                                确定
-                            </Button>
-                            </Form.Item>
-                            <Form.Item>
-                                <Button>
-                                    重置
-                                </Button>
-                        </Form.Item>  
-                    </div>
+                    <Tablescom3/>
                 </div>
                 <div className={style.user_box}>
                     <Button>添加视图接口权限</Button>
                     <Form.Item>
                         {getFieldDecorator('add', {
                             rules: [
-                                { required: true, message: '密码不能为空' },
-                                { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.]).*$/, message: '数据有误' }
+                                
+                            
                             ],
                         })(
                             <Input
@@ -270,8 +83,8 @@ function adduser(props){
                             })(
                                 <Select style={{ width: 120 }}>
                                         {
-                                        identitylist&&identitylist.map(item=>
-                                            <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
+                                        viewdata&&viewdata.map(item=>
+                                            <Option value={item.view_authority_id} key={item.view_authority_id}>{item.view_authority_text}</Option>
                                         )
                                     }
                                 </Select>
@@ -282,6 +95,7 @@ function adduser(props){
                             <Button
                                 type="primary"
                                 loading={iconLoading}
+                                className={style.sub_btn}
                                 >
                                 确定
                             </Button>
@@ -302,7 +116,7 @@ function adduser(props){
                             })(
                                 <Select style={{ width: 120 }}>
                                         {
-                                        identitylist&&identitylist.map(item=>
+                                       identitylist&&identitylist.map(item=>
                                             <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
                                         )
                                     }
@@ -316,8 +130,8 @@ function adduser(props){
                             })(
                                 <Select style={{ width: 120 }}>
                                         {
-                                        identitylist&&identitylist.map(item=>
-                                            <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
+                                        apilist&&apilist.map(item=>
+                                            <Option value={item.api_authority_id} key={item.api_authority_id}>{item.api_authority_text}</Option>
                                         )
                                     }
                                 </Select>
@@ -328,6 +142,7 @@ function adduser(props){
                             <Button
                                 type="primary"
                                 loading={iconLoading}
+                                className={style.sub_btn}
                                 >
                                 确定
                             </Button>
@@ -362,8 +177,8 @@ function adduser(props){
                             })(
                                 <Select style={{ width: 120 }}>
                                         {
-                                        identitylist&&identitylist.map(item=>
-                                            <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
+                                       view_identity&&view_identity.map(item=>
+                                            <Option value={item.identity_view_authority_relation_id} key={item.identity_view_authority_relation_id}>{item.view_authority_text}</Option>
                                         )
                                     }
                                 </Select>
@@ -374,6 +189,7 @@ function adduser(props){
                             <Button
                                 type="primary"
                                 loading={iconLoading}
+                                className={style.sub_btn}
                                 >
                                 确定
                             </Button>
@@ -411,6 +227,21 @@ const mapDispatchToProp=dispatch=>{
         getidentity:()=>{
             dispatch({
                 type:"user/getidentity"
+            })
+        },
+        view_authority:()=>{
+            dispatch({
+                type:"user/view_authority"
+            })
+        },
+        api_authority:()=>{
+            dispatch({
+                type:"user/api_authority"
+            })
+        },
+        view_authority_relation:()=>{
+            dispatch({
+                type:"user/view_authority_relation"
             })
         }
     }
