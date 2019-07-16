@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'dva';
-import { Radio, Select, Button } from 'antd';
+import { Select, Button } from 'antd';
 import style from './watchQuestions.scss'
 const { Option } = Select;
 function watchQuestions(props) {
-    let { TypeList, examTypeDate, subjectDataType,Alldatacomplie, All } = props;
+    let { TypeList, examTypeDate, subjectDataType, All } = props;
     useEffect(() => {
         props.subjectDate() // 
         props.examType() // 获取所有日周月考

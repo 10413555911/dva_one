@@ -4,11 +4,12 @@ import Headers from '@/components/header/header'
 import style from './IndexPage.scss'
 import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { Router, Route, Switch } from 'dva/router';
+import { Route, Switch } from 'dva/router';
 import router from "../../router/index"
+import examDetails from './examination/addExam/examDetails/examDetails'
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
-let routerarr=[];
+let routerarr = [];
 for (let elem of router.values()) {
   routerarr.push(...elem.children)
 }
@@ -30,7 +31,7 @@ function IndexPage(props) {
         return "试题详情"
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
   })
   return (
     <div className={style.wrap}>
@@ -39,17 +40,16 @@ function IndexPage(props) {
         <Sider>
           <Menu theme="dark" mode="inline" >
             {
-                router.map((item,i)=>
-                  <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
-                    {
-                      item.children.map((item,i)=>
-                        {
-                          return <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item>
-                        }
-                      )
+              router.map((item, i) =>
+                <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
+                  {
+                    item.children.map((item, i) => {
+                      return <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item>
                     }
-                  </SubMenu>
-                )
+                    )
+                  }
+                </SubMenu>
+              )
             }
           </Menu>
         </Sider>
@@ -60,8 +60,9 @@ function IndexPage(props) {
           <Content className={style.content}>
             {/* 路由视口存放 */}
             <Switch>
+              <Route path="/index/Details" component={examDetails} />
               {
-                routerarr.map((item,i)=>
+                routerarr.map((item, i) =>
                   <Route key={i} path={item.path} component={item.component} />
                 )
               }

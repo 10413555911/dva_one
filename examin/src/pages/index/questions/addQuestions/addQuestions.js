@@ -14,9 +14,6 @@ function addQuestions(props) {
     props.userId()
   }, []);
   const [visibles, showVisible] = useState(false)
-  function submit() {
-    handleSubmit()
-  }
   let handleSubmit = (e) => {
     props.form.validateFields((err, values) => {
       if (values.titleText !== "" && values.questions_type_id !== "" && values.value !== "" && values.subject_id !== "" && values.exam_id !== "" && values.questions_answer !== "") {

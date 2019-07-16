@@ -15,7 +15,7 @@ function addExam(props) {
   }
   let handleSubmit = () => {
     props.form.validateFields((err, values) => {
-      props.history.push('/index/examDetails')  //跳转详情页
+      props.history.push('/index/Details')  //跳转详情页
       props.addexam({
         start_time:start,
         end_time:end,
@@ -130,7 +130,7 @@ function addExam(props) {
             </div>
           </div>
         </div>
-        <Button className={styles.button} type="primary" htmlType="submit" >创建试卷</Button>
+        <Button className={styles.button} type="primary" onClick={()=>{submit}} htmlType="submit" >创建试卷</Button>
       </div>
     </Form>
   )

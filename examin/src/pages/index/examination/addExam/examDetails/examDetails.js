@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'dva';
 import styles from './examDetails.scss';
 import { Form, Drawer, Select, Button } from 'antd';
-import Item from 'antd/lib/list/Item';
 const { Option } = Select;
 function examDetails(props) {
     let { examTypeDate, Allquestion } = props
@@ -11,11 +10,11 @@ function examDetails(props) {
     useEffect(() => {
 
     }, [])
-    const allquestion = JSON.parse(localStorage.getItem("Allquestion"))
-    console.log(allquestion)
+    const allquestion = JSON.parse(localStorage.getItem("Allquestion")) //本地存储一下
     const [visible, show] = useState(false)
+    console.log(allquestion)
     let del = (item) => {
-        props.del(item.subject_id)
+        props.del(item.subject_id)    //获取本地存储
         console.log(item.subject_id)
     }
     return (
@@ -49,7 +48,6 @@ function examDetails(props) {
             </div>
         </div>
     )
-
 }
 const mapStateToProps = state => {
     return { ...state.exam }
