@@ -53,10 +53,8 @@ const router=[
                 path:"/index/addExam",
                 component:addExam,
                 title:"添加考试" ,
-                ids:'6'
+                ids:'6',
             },
-            
-
             {    
                 path:"/index/examDetails",
                 component:examDetails,
