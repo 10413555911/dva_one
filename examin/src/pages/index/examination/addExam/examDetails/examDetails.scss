@@ -7,15 +7,44 @@
   padding: 20px 0 0 20px;
   display: flex;
   flex-direction: column;
+  height: 600px;
+  overflow-y: auto;
 }
-.button{
-   padding: 8px;
-   width: 80px;
+.button {
+  padding: 8px;
+  width: 80px;
 }
-.main{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding:30px;
-    text-align: center;
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 30px;
+  text-align: center;
+}
+.detalis {
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  text-align: justify;
+  padding: 15px;
+  position: relative;
+  p {
+    margin-top: 15px;
+    text-indent: 3px;
+    background: #ccc;
+    margin: 0 auto;
+    padding: 5px;
+    font-size: 10px;
+  }
+  span {
+    display: inline-block;
+    color: blue;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    cursor: pointer;
+  }
+}
+.Allquestion {
+  display: flex;
+  flex-direction: column;
 }

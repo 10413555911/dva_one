@@ -59,7 +59,6 @@ const router=[
                 path:"/index/examDetails",
                 component:examDetails,
                 title:"添加考试" ,
-                ids:'7'
             }
         ]
     },

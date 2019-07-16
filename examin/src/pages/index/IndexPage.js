@@ -31,7 +31,6 @@ function IndexPage(props) {
     }
   }
   useEffect(()=>{
-    
   })
   return (
     <div className={style.wrap}>
@@ -53,7 +52,6 @@ function IndexPage(props) {
                 )
             }
           </Menu>
-
         </Sider>
         <Layout className={style.section}>
           <Header style={{ background: '#fff', padding: 0 }} >
