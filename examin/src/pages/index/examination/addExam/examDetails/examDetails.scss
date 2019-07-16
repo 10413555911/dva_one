@@ -1,0 +1,21 @@
+.wrap {
+  width: 98%;
+  border-radius: 13px;
+  border: 1px solid #ffffff;
+  background: #ffff;
+  margin: 0 auto;
+  padding: 20px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+.button{
+   padding: 8px;
+   width: 80px;
+}
+.main{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding:30px;
+    text-align: center;
+}

@@ -13,7 +13,6 @@ for (let elem of router.values()) {
   routerarr.push(...elem.children)
 }
 function IndexPage(props) {
-  console.log("index页", props.location.pathname)
   let headerText = () => {
     let text = props.location.pathname;
     switch (text) {

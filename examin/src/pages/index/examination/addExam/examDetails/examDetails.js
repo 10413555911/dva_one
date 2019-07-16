@@ -1,35 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'dva';
 import styles from './examDetails.scss';
-import { Form, InputNumber, Input, Select, DatePicker, Button } from 'antd';
+import { Form,Drawer, Select,Button } from 'antd';
 const { Option } = Select;
 function examDetails(props) {
-    let { examTypeDate,Allquestion } = props
+    let { examTypeDate, Allquestion } = props
     const { getFieldDecorator } = props.form;
     console.log(Allquestion)
     useEffect(() => {
-
     }, [])
-    let submit = () => {   //点击提交按钮 
-        // handleSubmit()  //调用提交接口
-    }
-    //   let handleSubmit = () => {
-    //     props.form.validateFields((err, values) => {
-    //       props.addexam({
-    //         start_time:start,
-    //         end_time:end,
-    //         number:values.number,
-    //         subject_id:values.subject_id,
-    //         exam_id:values.exam_id,
-    //         title:values.titleText
-    //       })
-    //     })
-    //   }
+    const [visible,show] = useState(false)
+    return (
+        <div className={styles.wrap}>
+            <Button className={styles.button} onClick={()=>{show(true)}}>添加试题</Button>
+            <Drawer
+                title="Basic Drawer"
+                placement="right"
+                closable={visible}
+                visible={visible}
+            >
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+            </Drawer>
+            <div className={styles.main}>
+                <h2>123</h2>
+                <div>考试时间：1小时三年十分钟后</div>
 
-    return <div>1</div>
+                <div className={styles.Allquestion}></div>
+            </div>
+
+        </div>
+    )
+
 }
 const mapStateToProps = state => {
-    return { ...state.subject, ...state.exam }
+    return { ...state }
 }
 const mapDispatchToPorps = dispatch => {
     return {
@@ -44,7 +50,6 @@ const mapDispatchToPorps = dispatch => {
             })
         },
         addexam: (payload) => {
-            console.log(payload)
             dispatch({
                 type: 'exam/addexam',
                 payload
