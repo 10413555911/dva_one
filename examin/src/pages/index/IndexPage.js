@@ -13,10 +13,10 @@ for (let elem of router.values()) {
   routerarr.push(...elem.children)
 }
 function IndexPage(props) {
-  console.log("index页",props.location.pathname)
-  let headerText=()=>{
-  let text=props.location.pathname;
-    switch(text){
+  console.log("index页", props.location.pathname)
+  let headerText = () => {
+    let text = props.location.pathname;
+    switch (text) {
       case "/index/addQuestions":
         return "添加试题";
       case "/index/questionsType":
@@ -46,7 +46,7 @@ function IndexPage(props) {
                     {
                       item.children.map((item,i)=>
                         {
-                          return <Menu.Item key={i}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item>
+                          return <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item>
                         }
                       )
                     }
@@ -54,6 +54,7 @@ function IndexPage(props) {
                 )
             }
           </Menu>
+
         </Sider>
         <Layout className={style.section}>
           <Header style={{ background: '#fff', padding: 0 }} >

@@ -3,8 +3,13 @@ import questionsType from "../pages/index/questions/questionsType/questionsType"
 import watchQuestions from "../pages/index/questions/watchQuestions/watchQuestions"
 import addUser from "../pages/index/user/addUser/adduser"
 import showUser from "../pages/index/user/showUser/showuser"
+<<<<<<< HEAD
 import addExam from "../pages/index/examination/addExam/addExam"
 import examList from "../pages/index/examination/examList/examList"
+=======
+import addExam from '../pages/index/examination/addExam/addExam'
+import examDetails from '../pages/index/examination/addExam/examDetails/examDetails'
+>>>>>>> ae2673dff296eb4f1126adaec44196942a3bb36c
 const router=[
     {
         type:"试题管理",
@@ -12,17 +17,20 @@ const router=[
             {
                 path:"/index/addQuestions",
                 component:addQuestions,
-                title:"添加试题"
+                title:"添加试题",
+                ids:'1'
             },
             {
                 path:"/index/questionsType",
                 component: questionsType,
-                title:"试题分类"
+                title:"试题分类",
+                ids:'2'
             },
             {
                 path:"/index/watchQuestions",
                 component:watchQuestions,
-                title:"查看试题"
+                title:"查看试题",
+                ids:'3'
             }
         ]
     },
@@ -32,12 +40,14 @@ const router=[
             {
                 path:"/index/addUser",
                 component:addUser,
-                title:"添加用户"
+                title:"添加用户",
+                ids:'4'
             },
             {
                 path:"/index/showUser",
                 component: showUser,
-                title:"用户展示"
+                title:"用户展示",
+                ids:'5'
             }
         ]
     },
@@ -47,12 +57,26 @@ const router=[
             {
                 path:"/index/addExam",
                 component:addExam,
+<<<<<<< HEAD
                 title:"添加考试" 
+=======
+                title:"添加考试" ,
+                ids:'6'
+>>>>>>> ae2673dff296eb4f1126adaec44196942a3bb36c
             },
+            
+
             {    
+<<<<<<< HEAD
                 path:"/index/examList",
                 component:examList,
                 title:"试卷列表" 
+=======
+                path:"/index/examDetails",
+                component:examDetails,
+                title:"添加考试" ,
+                ids:'7'
+>>>>>>> ae2673dff296eb4f1126adaec44196942a3bb36c
             }
         ]
     },

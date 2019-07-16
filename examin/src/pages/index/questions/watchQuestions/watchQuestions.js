@@ -4,7 +4,7 @@ import { Radio, Select, Button } from 'antd';
 import style from './watchQuestions.scss'
 const { Option } = Select;
 function watchQuestions(props) {
-    let { TypeList, examTypeDate, subjectDataType, All } = props;
+    let { TypeList, examTypeDate, subjectDataType,Alldatacomplie, All } = props;
     useEffect(() => {
         props.subjectDate() // 
         props.examType() // 获取所有日周月考
@@ -19,21 +19,17 @@ function watchQuestions(props) {
     const [exam_shiti, setexam_shiti] = useState('')
     const [exam_type, setexam_type] = useState('')
     const [Index, setIndex] = useState(0);
-    const [subject_id, setId] = useState();
-    let chengeIndex=(i,id)=>{
-        setIndex(i)
-        console.log(id)
-        setId(id)
-    }
     let handclick = () => {
-        console.log({exam_id: exam_shiti,subject_id:subject_id, questions_type_id: exam_type })
-        props.findchange({exam_id: exam_shiti,subject_id:subject_id, questions_type_id: exam_type })
-        //    props.findchange(exam_shiti, exam_type)
+        props.findchange({ exam_id: exam_shiti, questions_type_id: exam_type })
     }
-    let Changepage = () => {
-
-        props.history.push('')
-    } 
+    //点击跳转编辑页面
+    let Changepage = (item) => {
+        props.datacomplie(item)
+        props.history.push('/index/compile?id=' + item.questions_id)
+    }
+    let chengeIndex = (i) => {
+        setIndex(i)
+    }
     return (
         <div className={style.wrap}>
             <div className={style.main}>
@@ -42,17 +38,10 @@ function watchQuestions(props) {
                     <p>
                         <span>all</span>
                         {
-                            TypeList.map((item,i)=>
-                                <span className={Index===i?style.actiov:''} onClick={()=>chengeIndex(i,item.subject_id)} key={item.subject_id}>{item.subject_text}</span> 
+                            TypeList.map((item, i) =>
+                                <span className={Index === i ? style.actiov : ''} onClick={() => chengeIndex(i)} key={item.subject_id}>{item.subject_text}</span>
                             )
                         }
-                        {/* <Radio.Group buttonStyle="solid">
-                            {
-                                TypeList.map((item, id) => {
-                                    return <Radio.Button key={item.subject_id} className={style.sizes} value={item.subject_id}>{item.subject_text}</Radio.Button>
-                                })
-                            }
-                        </Radio.Group> */}
                     </p>
                 </div>
                 <div className={style.type}>
@@ -86,21 +75,21 @@ function watchQuestions(props) {
             {/* 列表 */}
             <div className={style.st_list}>
                 {
-                   All?( All.map(item => {
-                            return <div key={item.questions_id} className={style.ant_list} >
-                                <span onClick={() => todetails(item)}>
-                                    <p>{item.title}</p>
-                                    <div className={style.child}>
-                                        <div>{item.questions_type_text}</div>
-                                        <div>{item.subject_text}</div>
-                                        <div>{item.exam_name}</div>
-                                    </div>
-                                    <p className={style.fb}>dingshangshang发布</p>
-                                </span>
-                                <span className={style.edit} onClick={() => Changepage()}>编辑</span>
-                            </div>
-                        })
-                    ):(<div className={style.alter}>没有数据</div>)
+                    All ? (All.map(item => {
+                        return <div key={item.questions_id} className={style.ant_list} >
+                            <span onClick={() => todetails(item)}>
+                                <p>{item.title}</p>
+                                <div className={style.child}>
+                                    <div>{item.questions_type_text}</div>
+                                    <div>{item.subject_text}</div>
+                                    <div>{item.exam_name}</div>
+                                </div>
+                                <p className={style.fb}>dingshangshang发布</p>
+                            </span>
+                            <span className={style.edit} onClick={() => Changepage(item)}>编辑</span>
+                        </div>
+                    })
+                    ) : (<div className={style.alter}>没有数据</div>)
                 }
             </div>
         </div>

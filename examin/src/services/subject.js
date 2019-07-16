@@ -34,8 +34,7 @@ export function userInfo() {
 }
 //更新试题接口
 export function update(payload) {
-    console.log(payload)
-    return request.put('/exam/questions/update',payload
+    return request.put('/exam/questions/update', payload
     )
 }
 

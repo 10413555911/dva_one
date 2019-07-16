@@ -6,7 +6,7 @@ import Editor from 'for-editor';
 const { Option } = Select;
 function addQuestions(props) {
   const { getFieldDecorator } = props.form;
-  let { examTypeDate, subjectDataType, TypeList, userIds,All } = props
+  let { examTypeDate, subjectDataType, TypeList } = props
   useEffect(() => {
     props.examType()
     props.subject()
@@ -127,8 +127,7 @@ function addQuestions(props) {
           <Button type="primary" htmlType="submit" >提交</Button>
         </div>
       </div>
-      <Modal
-        title="确定要添加？"  visible={visibles}  onCancel={()=>showVisible()}    onOk={()=>showVisible(false)}></Modal>
+      <Modal title="确定要添加？"  visible={visibles}  onCancel={()=>showVisible()}    onOk={()=>showVisible(false)}></Modal>
     </Form>
 
   );
