@@ -15,7 +15,7 @@ function addExam(props) {
   }
   let handleSubmit = () => {
     props.form.validateFields((err, values) => {
-      props.history.push('/index/Details')  //跳转详情页
+      props.history.push('/index/Details_texts')  //跳转详情页
       props.addexam({
         start_time:start,
         end_time:end,

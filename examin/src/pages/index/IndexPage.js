@@ -43,9 +43,8 @@ function IndexPage(props) {
               router.map((item, i) =>
                 <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
                   {
-                    item.children.map((item, i) => {
-                      return <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item>
-                    }
+                    item.children.map((item, i) =>
+                      item.title ? <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item> : null
                     )
                   }
                 </SubMenu>
@@ -60,10 +59,10 @@ function IndexPage(props) {
           <Content className={style.content}>
             {/* 路由视口存放 */}
             <Switch>
-              <Route path="/index/Details" component={examDetails} />
+              {/* <Route path="/index/Details" component={examDetails} /> */}
               {
                 routerarr.map((item, i) =>
-                  <Route key={i} path={item.path} component={item.component} />
+                  <Route key={item.ids} path={item.path} component={item.component} />
                 )
               }
             </Switch>

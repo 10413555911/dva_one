@@ -4,6 +4,10 @@ export function addexam(payload) {
     )
 }
 export function del(payload) {
-    return request.delete('/exam/exam/'+payload, 
+    return request.delete('/exam/exam/' + payload,
     )
+}
+
+export function examList() {
+    return request.get('/exam/exam/')
 }

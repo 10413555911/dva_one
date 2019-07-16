@@ -5,10 +5,11 @@ import { Select, Button, Table } from 'antd';
 const { Option } = Select;
 const ButtonGroup = Button.Group;
 function examList(props) {
-  let { examTypeDate, TypeList } = props
+  let { examTypeDate, TypeList, obj } = props
   useEffect(() => {
     props.examType()
     props.subject()
+    props.examList()
   }, [])
   function computTime(obj) {
     let startTime = obj.start_time * 1;
@@ -24,6 +25,9 @@ function examList(props) {
     var leave3 = leave2 % (60 * 1000);
     var seconds = Math.round(leave3 / 1000);
     return hours + ":" + minutes + ":" + seconds;
+  }
+  function Tochild(item) {
+    console.log(item)
   }
   const columns = [
     {
@@ -68,6 +72,12 @@ function examList(props) {
       dataIndex: 'end_time',
       key: 4,
       render: (item) => { return <div><span>{new Date(item * 1).toLocaleString()}</span></div> }
+    },
+    {
+      title: '详情',
+      dataIndex: 'end_time',
+      key: 5,
+      render: (item) => { return <div className={styles.dire} onClick={() => {Tochild(item)}}>详情</div> }
     }
   ];
   return (
@@ -79,7 +89,7 @@ function examList(props) {
             <Select style={{ width: '60%', marginLeft: '20px' }} >
               {
                 examTypeDate && examTypeDate.map((item) => {
-                  return <Option key={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
+                  return <Option rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
                 }
                 )
               }
@@ -112,7 +122,7 @@ function examList(props) {
           <div>
             <Table
               columns={columns}
-              dataSource={props.testList}
+              dataSource={obj}
             />
           </div>
         </div>
@@ -125,7 +135,7 @@ examList.propTypes = {
 };
 const mapStateToProps = state => {
   return {
-    ...state.subject
+    ...state.subject, ...state.exam
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -139,9 +149,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: 'subject/subject'
       })
+    },
+    examList: () => {
+      dispatch({
+        type: 'exam/examList'
+      })
     }
-
-
   }
 }
 

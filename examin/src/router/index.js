@@ -6,6 +6,7 @@ import showUser from "../pages/index/user/showUser/showuser"
 import addExam from '../pages/index/examination/addExam/addExam'
 import examDetails from '../pages/index/examination/addExam/examDetails/examDetails'  //添加试卷
 import examList from '../pages/index/examination/examList/examList'
+// import details from '../pages/index/watchQuestions/details/details'
 const router = [
     {
         type: "试题管理",
@@ -16,6 +17,10 @@ const router = [
                 title: "添加试题",
                 ids: '1'
             },
+            // {
+            //     path: "/index/details/?id",
+            //     component: details,
+            // },
             {
                 path: "/index/questionsType",
                 component: questionsType,
@@ -55,6 +60,10 @@ const router = [
                 component: addExam,
                 title: "添加考试",
                 ids: '6'
+            },
+            {
+                path: '/index/Details_texts',
+                component: examDetails,
             },
             {
                 path: "/index/examList",

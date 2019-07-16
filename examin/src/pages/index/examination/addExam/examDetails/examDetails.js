@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { connect } from 'dva';
 import styles from './examDetails.scss';
 import { Form, Drawer, Select, Button } from 'antd';
 const { Option } = Select;
 function examDetails(props) {
-    let { examTypeDate, Allquestion } = props
-    const { getFieldDecorator } = props.form;
-    localStorage.setItem('Allquestion', JSON.stringify(Allquestion))
-    useEffect(() => {
-
-    }, [])
-    const allquestion = JSON.parse(localStorage.getItem("Allquestion")) //本地存储一下
+    let { Allquestion } = props
+    if(Allquestion){
+        localStorage.setItem('Allquestion', JSON.stringify(Allquestion)) //本地存储一下
+    }
+    const allquestion = JSON.parse(localStorage.getItem("Allquestion"))//获取本地存储
     const [visible, show] = useState(false)
-    console.log(allquestion)
     let del = (item) => {
-        props.del(item.subject_id)    //获取本地存储
-        console.log(item.subject_id)
+        props.del(item.subject_id)    
     }
     return (
         <div className={styles.wrap}>
@@ -35,7 +31,7 @@ function examDetails(props) {
                 <div>考试时间：1小时三年十分钟后</div>
                 <div className={styles.Allquestion}>
                     {
-                        Allquestion && Allquestion.map((item, index) => {
+                        allquestion && allquestion.map((item, index) => {
                             return <div key={index} className={styles.detalis}>
                                 <span onClick={() => del(item)}>删除</span>
                                 <div style={{ fontWeight: '600', fontSize: '15px' }}>1:{item.title}</div>

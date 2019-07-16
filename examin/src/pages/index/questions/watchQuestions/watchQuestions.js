@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'dva';
-import { Select, Button } from 'antd';
+import React, { useEffect, useState } from './node_modules/react';
+import { connect } from './node_modules/dva';
+import { Select, Button } from './node_modules/antd';
 import style from './watchQuestions.scss'
 const { Option } = Select;
 function watchQuestions(props) {
