@@ -3,6 +3,8 @@ import questionsType from "../pages/index/questions/questionsType/questionsType"
 import watchQuestions from "../pages/index/questions/watchQuestions/watchQuestions"
 import addUser from "../pages/index/user/addUser/adduser"
 import showUser from "../pages/index/user/showUser/showuser"
+import addExam from "../pages/index/examination/addExam/addExam"
+import examList from "../pages/index/examination/examList/examList"
 const router=[
     {
         type:"试题管理",
@@ -43,14 +45,14 @@ const router=[
         type:"考试管理",
         children:[
             {
-                path:"/index/watchQuestions",
-                component:watchQuestions,
+                path:"/index/addExam",
+                component:addExam,
                 title:"添加考试" 
             },
             {    
-                path:"/index/watchQuestions",
-                component:watchQuestions,
-                title:"添加考试" 
+                path:"/index/examList",
+                component:examList,
+                title:"试卷列表" 
             }
         ]
     },
