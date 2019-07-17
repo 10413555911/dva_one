@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react"
 import {connect} from "dva"
 import style from  "./adduser.scss"
 import {Input, Select, Layout,Button ,Form, Modal,Tabs,Table} from "antd"
-const { Header, Footer, Sider, Content } = Layout;
+const { Content } = Layout;
 const { Option } = Select;
 const { TabPane } = Tabs;
 function adduser(props){

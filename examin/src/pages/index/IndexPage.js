@@ -41,10 +41,10 @@ function IndexPage(props) {
           <Menu theme="dark" mode="inline" >
             {
               router.map((item, i) =>
-                <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
+                <SubMenu key={i} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
                   {
                     item.children.map((item, i) =>
-                      item.title ? <Menu.Item key={item.ids}><NavLink to={item.path}>
+                      item.title ? <Menu.Item key={i}><NavLink to={item.path}>
                         {/*  怎么去遍历*/}
                         {props.intl.formatMessage({ id: 'router.questions' })}
 
