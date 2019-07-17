@@ -1,7 +1,7 @@
-import React, { useEffect } from './node_modules/react';
-import { connect } from './node_modules/dva';
+import React, { useEffect } from 'react';
+import { connect } from 'dva';
 import styles from './details.scss';
-import ReactMarkdown from './node_modules/react-markdown';
+import ReactMarkdown from 'react-markdown';
 function details(props) {
     let { Objs,All } = props
     useEffect(()=>{

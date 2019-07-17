@@ -31,5 +31,16 @@ img {
   width: 40px;
   height: 40px;
   border-radius: 30px;
-  border: 1px solid red;
+
+}
+.btn {
+  position: absolute;
+  right: 100px;
+  top: 21px;
+  button {
+    border-radius: 13px;
+    background: #ffff;
+    border: 1px solid #4e93e5;
+    padding: 2px;
+  }
 }

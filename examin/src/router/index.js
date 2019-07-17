@@ -6,7 +6,8 @@ import showUser from "../pages/index/user/showUser/showuser"
 import addExam from '../pages/index/examination/addExam/addExam'
 import examDetails from '../pages/index/examination/addExam/examDetails/examDetails'  //添加试卷
 import examList from '../pages/index/examination/examList/examList'
-// import details from '../pages/index/watchQuestions/details/details'
+import details from '../pages/index/questions/watchQuestions/details/details'
+import classman from '../pages/index/class/classman/classman'
 const router = [
     {
         type: "试题管理",
@@ -17,10 +18,10 @@ const router = [
                 title: "添加试题",
                 ids: '1'
             },
-            // {
-            //     path: "/index/details/?id",
-            //     component: details,
-            // },
+            {
+                path: "/index/details/?id",
+                component: details,
+            },
             {
                 path: "/index/questionsType",
                 component: questionsType,
@@ -77,20 +78,20 @@ const router = [
         type: "班级管理",
         children: [
             {
-                path: "/index/showUser",
-                component: showUser,
-                title: "班级管理"
-            },
-            {
-                path: "/index/showUser",
-                component: showUser,
-                title: "班级管理"
-            },
-            {
-                path: "/index/showUser",
-                component: showUser,
+                path: "/index/classman",
+                component: classman,
                 title: "班级管理"
             }
+            // {
+            //     path: "/index/showUser",
+            //     component: showUser,
+            //     title: "班级管理"
+            // },
+            // {
+            //     path: "/index/showUser",
+            //     component: showUser,
+            //     title: "班级管理"
+            // }
         ]
     },
     {

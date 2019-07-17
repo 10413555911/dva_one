@@ -6,7 +6,7 @@ import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'dva/router';
 import router from "../../router/index"
-import examDetails from './examination/addExam/examDetails/examDetails'
+import { injectIntl } from 'react-intl'
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 let routerarr = [];
@@ -44,7 +44,11 @@ function IndexPage(props) {
                 <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
                   {
                     item.children.map((item, i) =>
-                      item.title ? <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item> : null
+                      item.title ? <Menu.Item key={item.ids}><NavLink to={item.path}>
+                        {/*  怎么去遍历*/}
+                        {props.intl.formatMessage({ id: 'router.questions' })}
+
+                        {item.title}</NavLink></Menu.Item> : null
                     )
                   }
                 </SubMenu>
@@ -62,7 +66,7 @@ function IndexPage(props) {
               {/* <Route path="/index/Details" component={examDetails} /> */}
               {
                 routerarr.map((item, i) =>
-                  <Route key={item.ids} path={item.path} component={item.component} />
+                  <Route key={i} path={item.path} component={item.component} />
                 )
               }
             </Switch>
@@ -77,8 +81,4 @@ IndexPage.propTypes = {
 let mapstateToProps = state => {
   return { ...state.subjuect }
 }
-let mapdispatchToProps = dispatch => {
-  return {
-  }
-}
-export default connect(mapstateToProps, mapdispatchToProps)(IndexPage);
+export default injectIntl(connect(mapstateToProps)(IndexPage));
