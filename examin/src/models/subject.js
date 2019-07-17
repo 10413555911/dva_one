@@ -1,4 +1,4 @@
-import { subject, examType, subjectData, allQuestions, condition, insertQuestionsType, questions, userInfo, update } from '../services/index'
+import { subJect, examType, subjectData, allQuestions, condition, insertQuestionsType, questions, userInfo, update } from '../services/index'
 
 export default {
     namespace: 'subject',
@@ -12,8 +12,8 @@ export default {
         Alldatacomplie: null //编辑页面的每一个数据
     },
     effects: {
-        *subject({ payload }, { call, put }) { 
-            let data = yield call(subject)
+        *subJect({ payload }, { call, put }) { 
+            let data = yield call(subJect)
             yield put({
                 type: 'subjectDate',
                 payload: data.data

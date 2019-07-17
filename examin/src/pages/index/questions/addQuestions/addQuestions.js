@@ -9,7 +9,7 @@ function addQuestions(props) {
   let { examTypeDate, subjectDataType, TypeList } = props
   useEffect(() => {
     props.examType()
-    props.subject()
+    props.subJect()
     props.subjectData()
     props.userId()
   }, []);
@@ -142,9 +142,9 @@ const mapDispatchToPorps = dispatch => {
         type: 'subject/examType'
       })
     },
-    subject: () => {
+    subJect: () => {
       dispatch({
-        type: 'subject/subject'
+        type: 'subject/subJect'
       })
     },
     subjectData: () => {

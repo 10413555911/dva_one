@@ -1,7 +1,12 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {connect} from "dva"
 import style from './header.scss'
-function Example() {
+import {Select} from "antd";
+const { Option } = Select;
+function headers(props) {
+  let handleProvinceChange=value=>{
+    props.updataLocale(value)
+  }
   return (
     <div className={style.header}>
       <div className={style.header_center}>
@@ -12,10 +17,33 @@ function Example() {
           <img className={style.portrait} alt="" />
           <span>chenmanjie</span>
         </div>
+        <div>
+          <Select
+            defaultValue="中文"
+            style={{ width: 120 }}
+            onChange={(v)=>handleProvinceChange(v)}
+          >
+            <Option key="1" value={"zh"}>中文</Option>
+            <Option key="2" value={"en"}>英文</Option> 
+          </Select>
+        </div>
       </div>
     </div>
   );
 }
-Example.propTypes = {
-};
-export default Example;
+const mapStateToProps=state=>{
+    return{
+      ...state.global
+    }
+}
+const mapDispatchToProps=dispatch=>{
+  return{
+    updataLocale:payload=>{
+      dispatch({
+        type:"global/updataLocale",
+        payload
+      })
+  }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(headers);
