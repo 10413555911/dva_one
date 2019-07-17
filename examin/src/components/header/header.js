@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from "dva"
 import style from './header.scss'
 function Example() {
   return (

@@ -38,7 +38,7 @@ function IndexPage(props) {
       {/* <Headers></Headers> */}
       <Layout className={style.main}>
         <Sider>
-          <Menu theme="dark" mode="inline" >
+          <Menu theme="dark" mode="inline">
             {
                 router.map((item,i)=>
                   <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
