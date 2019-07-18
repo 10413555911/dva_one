@@ -3,6 +3,8 @@ import questionsType from "../pages/index/questions/questionsType/questionsType"
 import watchQuestions from "../pages/index/questions/watchQuestions/watchQuestions"
 import addUser from "../pages/index/user/addUser/adduser"
 import showUser from "../pages/index/user/showUser/showuser"
+import addClass from '../pages/index/class/classman/classman'
+import addroom from '../pages/index/class/addroom/addroom'
 const router=[
     {
         type:"试题管理",
@@ -73,16 +75,16 @@ const router=[
        id:"router.class",
        children:[
            {
-                path:"/index/showUser",
-                component:showUser,
+                path:"/index/addClass",
+                component:addClass,
                 id:"router.class.add",
                 title:"班级管理"
             },
            {
-                path:"/index/showUser",
-                component:showUser,
-                id:"router.class.classroom",
-                title:"班级管理"
+                path:"/index/addroom",
+                component:addroom,
+                id:"router.class.add",
+                title:"教室管理"
             },
             {
                 path:"/index/showUser",

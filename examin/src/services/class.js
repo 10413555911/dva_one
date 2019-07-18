@@ -20,6 +20,20 @@ export function delete_class(data) {    //删除班级接口
     return request.delete('/manger/grade/delete', { data }
     )
 }
+export function addroom() {    //获取全部教室
+    return request.get('/manger/room'
+    )
+}
+export function addroom_ADD(payload) {    //获取全部教室
+    return request.post('/manger/room', payload
+    )
+}
+export function DelRoom(payload) {    //删除教室
+    console.log(payload)
+    return request.delete('/manger/room/delete', { payload }
+    )
+}
+
 
 
 
