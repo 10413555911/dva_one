@@ -9,7 +9,6 @@ export default {
   
     reducers: {
       updataLocale(state, action) {
-          console.log("global...",action)
         return { ...state, locale:action.payload };
       },
     },

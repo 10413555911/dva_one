@@ -14,52 +14,42 @@ class Tables4 extends React.Component {
         };
     }
     componentDidMount(){
+       this.props.getidentity()
+       this.props.getUserdata()
+       this.props.api_authority()//api接口权限
+       this.props.view_authority_relation()
     }
     handleSubmit=e=>{
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            console.log(values.apiname)
           if (values.apiname !=="" && values.apiurl !==""&& values.apifn !=="") {
-                this.props.authorityApi({
-                    api_authority_text:values.apiname,
-                    api_authority_url:values.apiurl,
-                    api_authority_method:values.apifn
-                })
+            // this.props.authorityView({
+            //     view_authority_text:"",
+            //     view_id:""
+            // })
           }  
         })
     }
     render() {
+        const {identitylist,userlist,apilist,view_identity}=this.props
         const { getFieldDecorator } =this.props.form;
         return (
             <React.Fragment>
-                <Button>添加api接口权限</Button>
+                <Button>添加视图接口权限</Button>
                 <Form onSubmit={(e)=>this.handleSubmit(e)}>
-                    <Form.Item>
-                        {getFieldDecorator('apiname', {
-                            rules: [],
-                        })(
-                            <Input
-                            placeholder="请输入api接口权限名称"
-                            />
-                        )}
-                    </Form.Item>
-                    <Form.Item>
-                        {getFieldDecorator('addurl', {
-                            rules: [],
-                        })(
-                            <Input
-                            placeholder="请输入api接口权限url"
-                            />
-                        )}
-                    </Form.Item>
-                    <Form.Item>
-                        {getFieldDecorator('addfn', {
-                            rules: [],
-                        })(
-                            <Input
-                            placeholder="请输入api接口权限方法"
-                            />
-                        )}
+                <Form.Item>
+                        {getFieldDecorator('viewname', {
+                            rules: [{ required: true, message: "id类型必选" }],
+                            initialValue: "请选择已有视图"
+                            })(
+                                <Select style={{ width: 140,color:"#ccc" }}>
+                                        {
+                                       view_identity&&view_identity.map(item=>
+                                            <Option value={item.identity_view_authority_relation_id} key={item.identity_view_authority_relation_id}>{item.view_authority_text}</Option>
+                                        )
+                                    }
+                                </Select>
+                            )}
                     </Form.Item>
                     <div className={style.btn_box}>
                         <Form.Item>
@@ -90,24 +80,32 @@ const mapStateToProp=state=>{
 }
 const mapDispatchToProp=dispatch=>{
     return{
-        adduser:(payload)=>{
-             dispatch({
-                 type:"user/adduser",
-                 payload
-             })
-         },
-         addidentity:(payload)=>{
+        getUserdata:()=>{
             dispatch({
-                type:"user/addidentity",
+                type:"user/getUserdata"
+            })
+        },
+        getidentity:()=>{
+            dispatch({
+                type:"user/getidentity"
+            })
+        },
+        view_authority_relation:()=>{
+            dispatch({
+                type:"user/view_authority_relation"
+            })
+        },
+        api_authority:()=>{
+            dispatch({
+                type:"user/api_authority"
+            })
+        },
+        authorityView:(payload)=>{
+            dispatch({
+                type:"user/authorityView",
                 payload
             })
-         },
-         authorityApi:payload=>{
-             dispatch({
-                 type:"user/authorityApi",
-                 payload
-             })
-         }
+        }
     }
 }
 export default connect(mapStateToProp,mapDispatchToProp)(Form.create()(Tables4));

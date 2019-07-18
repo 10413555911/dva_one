@@ -66,7 +66,7 @@ class Tables1 extends React.Component {
                                     rules: [{ required: true, message: "id类型必选" }],
                                     initialValue: "请选择身份id"
                                     })(
-                                        <Select style={{ width: 120 }}>
+                                        <Select style={{ width: 140,color:"#ccc" }}>
                                             {
                                                 identitylist&&identitylist.map(item=>
                                                     <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
@@ -101,7 +101,7 @@ class Tables1 extends React.Component {
                                     rules: [{ required: true, message: "id类型必选" }],
                                     initialValue: "请选择身份id"
                                     })(
-                                        <Select style={{ width: 120 }}>
+                                        <Select style={{ width: 140,color:"#ccc" }}>
                                             {
                                                 userlist&&userlist.map(item=>
                                                     <Option value={item.user_name} key={item.user_id}>{item.user_name}</Option>
@@ -136,7 +136,7 @@ class Tables1 extends React.Component {
                                     rules: [{ required: true, message: "id类型必选" }],
                                     initialValue: "请选择身份id"
                                     })(
-                                        <Select style={{ width: 120 }}>
+                                        <Select style={{ width: 140,color:"#ccc" }}>
                                              {
                                                 identitylist&&identitylist.map(item=>
                                                     <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>

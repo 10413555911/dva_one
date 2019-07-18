@@ -11,7 +11,6 @@ for (let elem of router.values()) {
 }
 
 function MenuList(props){
-    console.log("Menu...",props)
     return(
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["sub1"]}>
             {

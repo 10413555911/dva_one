@@ -18,7 +18,11 @@ class Tables3 extends React.Component {
     handleSubmit=e=>{
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            console.log(values.apiname)
+            console.log({
+                api_authority_text:values.apiname,
+                api_authority_url:values.apiurl,
+                api_authority_method:values.apifn
+            })
           if (values.apiname !=="" && values.apiurl !==""&& values.apifn !=="") {
                 this.props.authorityApi({
                     api_authority_text:values.apiname,
@@ -44,7 +48,7 @@ class Tables3 extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        {getFieldDecorator('addurl', {
+                        {getFieldDecorator('apiurl', {
                             rules: [],
                         })(
                             <Input
@@ -53,7 +57,7 @@ class Tables3 extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        {getFieldDecorator('addfn', {
+                        {getFieldDecorator('apifn', {
                             rules: [],
                         })(
                             <Input
