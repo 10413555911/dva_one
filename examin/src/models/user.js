@@ -1,4 +1,6 @@
-import {getUserdata,
+import {
+  updataUser,
+  getUserdata,
   getidentity,
   api_authority,
   api_authority_relation,
@@ -98,6 +100,14 @@ export default {
             type:"setIdApi",
             payload:data
         })
+      },
+      //更新用户
+      *updataUser({ payload }, { call, put }){
+          let data=yield call(updataUser,payload);
+          yield put({
+            type:"updatauser",
+            payload:data
+          })
       }
     },
   
@@ -135,6 +145,9 @@ export default {
         },
         setIdApi(state, {payload}){
           console.log(payload)
+          return {...state,payload}
+        },
+        updatauser(state, {payload}){
           return {...state,payload}
         }
     },
