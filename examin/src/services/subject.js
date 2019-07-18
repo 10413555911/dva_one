@@ -1,6 +1,6 @@
 import request from '../utils/request'
 //获取所有的课程
-export function subject() {
+export function subJect() {
     return request.get('/exam/subject')
 }
 //获取所有的考试类型 (日周月)

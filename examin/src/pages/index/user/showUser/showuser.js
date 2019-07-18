@@ -103,27 +103,27 @@ function showuser(props){
         <div className={style.show_wrap}>
             <div>
                 <Tabs defaultActiveKey="1" animated={false} type="card">
-                    <TabPane tab={<Button value="用户数据">用户数据</Button>} key="1">
+                    <TabPane tab={<Button className={style.btn} value="用户数据">用户数据</Button>} key="1">
                        <h2>用户数据</h2>
-                       <Table loading={loading} columns={columns}  dataSource={userlist&&userlist} />
+                       <Table loading={loading} columns={columns} rowKey="user_id" dataSource={userlist&&userlist} />
                     </TabPane>
-                    <TabPane tab={<Button value="身份数据">身份数据</Button>} key="2">
+                    <TabPane tab={<Button className={style.btn} value="身份数据">身份数据</Button>} key="2">
                        <h2>身份数据</h2>
                        <Table columns={identitycolumns}  dataSource={identitylist&&identitylist} />
                     </TabPane>
-                    <TabPane tab={<Button value="api接口权限">api接口权限</Button>} key="3">
+                    <TabPane tab={<Button className={style.btn} value="api接口权限">api接口权限</Button>} key="3">
                        <h2>api接口权限</h2>
                        <Table columns={apiauthoritycolumns}  dataSource={apilist&&apilist} />
                     </TabPane>
-                    <TabPane tab={<Button value="身份和api接口关系">身份和api接口关系</Button>} key="4">
+                    <TabPane tab={<Button  className={style.btn} value="身份和api接口关系">身份和api接口关系</Button>} key="4">
                        <h2>身份和api接口关系</h2>
                        <Table columns={apiIdentitycolumns}  dataSource={api_identity&&api_identity} />
                     </TabPane>
-                    <TabPane tab={<Button value="视图接口权限">视图接口权限</Button>} key="5">
+                    <TabPane tab={<Button className={style.btn} value="视图接口权限">视图接口权限</Button>} key="5">
                        <h2>视图接口权限</h2>
                        <Table columns={viewcolumns}  dataSource={viewdata&&viewdata} />
                     </TabPane>
-                    <TabPane tab={<Button value="身份和视图权限关系">身份和视图权限关系</Button>} key="6">
+                    <TabPane tab={<Button className={style.btn} value="身份和视图权限关系">身份和视图权限关系</Button>} key="6">
                        <h2>身份和视图权限关系</h2>
                        <Table columns={viewauthoritycolumns}  dataSource={view_identity&&view_identity} />
                     </TabPane>

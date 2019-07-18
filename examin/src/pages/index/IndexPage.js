@@ -6,7 +6,7 @@ import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'dva/router';
 import router from "../../router/index"
-import examDetails from './examination/addExam/examDetails/examDetails'
+import MenuList from "@/components/MenuList/MenuList"
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 let routerarr = [];
@@ -23,6 +23,10 @@ function IndexPage(props) {
         return "试题分类";
       case "/index/watchQuestions":
         return "查看试题";
+      case "/index/addUser":
+        return "添加用户";
+      case "/index/showUser":
+        return "用户展示";
       case "/index/details":
         return "试题详情";
       case "/index/compile":
@@ -36,21 +40,10 @@ function IndexPage(props) {
   return (
     <div className={style.wrap}>
       <Headers></Headers>
+      {/* 菜单 */}
       <Layout className={style.main}>
         <Sider>
-          <Menu theme="dark" mode="inline" >
-            {
-              router.map((item, i) =>
-                <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{item.type}</span></span>}>
-                  {
-                    item.children.map((item, i) =>
-                      item.title ? <Menu.Item key={item.ids}><NavLink to={item.path}>{item.title}</NavLink></Menu.Item> : null
-                    )
-                  }
-                </SubMenu>
-              )
-            }
-          </Menu>
+            <MenuList/>
         </Sider>
         <Layout className={style.section}>
           <Header style={{ background: '#fff', padding: 0 }} >
@@ -61,8 +54,8 @@ function IndexPage(props) {
             <Switch>
               {/* <Route path="/index/Details" component={examDetails} /> */}
               {
-                routerarr.map((item, i) =>
-                  <Route key={item.ids} path={item.path} component={item.component} />
+                routerarr.map((item,i)=>
+                  <Route key={`r${i}`} path={item.path} component={item.component} />
                 )
               }
             </Switch>
@@ -75,10 +68,11 @@ function IndexPage(props) {
 IndexPage.propTypes = {
 };
 let mapstateToProps = state => {
-  return { ...state.subjuect }
+  return { ...state }
 }
 let mapdispatchToProps = dispatch => {
   return {
+    
   }
 }
 export default connect(mapstateToProps, mapdispatchToProps)(IndexPage);

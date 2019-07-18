@@ -5,9 +5,20 @@
         border:none;
         background: #F0F2F5;
     }
+    .ant-tabs-tab-active .ant-tabs-tab{
+        color:#0A40FD;
+        border:1px solid #0A40FD;
+    }
 }
-button{
-     border-radius:0px !important;
+.btn{
+    min-width:90px;
+    max-width:160px;
+    padding: 0px 3px;
+    height: 30px;
+    // background: #fff;
+    // border:1px solid #0A40FD;
+    // color:#0A40FD;
+    border-radius: 0;
 }
 .show_wrap{
     width: 100%;

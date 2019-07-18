@@ -1,4 +1,15 @@
-import {getUserdata,getidentity,api_authority,api_authority_relation,view_authority,view_authority_relation,adduser} from "../services/user"
+import {getUserdata,
+  getidentity,
+  api_authority,
+  api_authority_relation,
+  view_authority,
+  view_authority_relation,
+  adduser,
+  addidentity,
+  authorityApi,
+  authorityView,
+  setIdentityApi
+} from "../services/user"
 export default {
     namespace: 'user',
     state: {
@@ -43,20 +54,50 @@ export default {
         let data = yield call(view_authority);
         yield put({ type: 'getview',payload:data});
       },
-      //
+      //视图权限
       *view_authority_relation({ payload }, { call, put }){
         let data = yield call(view_authority_relation);
         yield put({ type: 'getviewauthority',payload:data});
       },
-      //adduser
+      //添加用户
       *adduser({ payload }, { call, put }){
-        console.log(111)
           let data=yield call(adduser,payload);
-          console.log("user...",data)
           yield put({
             type:"addUser",
             payload:data
           })
+      },
+      //添加身份
+      *addidentity({ payload }, { call, put }){
+        let data=yield call(addidentity,payload);
+        console.log("user...",data)
+        yield put({
+          type:"addIdentity",
+          payload:data
+        })
+      },
+      //添加api接口权限
+      *authorityApi({ payload }, { call, put }){
+        let data=yield call(authorityApi,payload);
+        yield put({
+          type:"addauthorityApi",
+          payload:data
+        })
+      },
+      //添加视图接口
+      *authorityView({ payload }, { call, put }){
+        let data=yield call(authorityView,payload);
+        yield put({
+          type:"AuthorityView",
+          payload:data
+        })
+      },
+      *setIdentityApi({ payload }, { call, put }){
+        let data=yield call(setIdentityApi,payload);
+        yield put({
+            type:"setIdApi",
+            payload:data
+        })
       }
     },
   
@@ -81,6 +122,20 @@ export default {
         },
         addUser(state, {payload}){
           return { ...state, payload};
+        },
+        addIdentity(state, {payload}){
+          return { ...state, payload};
+        },
+        addauthorityApi(state, {payload}){
+          console.log(payload)
+          return { ...state, payload};
+        },
+        AuthorityView(state, {payload}){
+          return {...state,payload}
+        },
+        setIdApi(state, {payload}){
+          console.log(payload)
+          return {...state,payload}
         }
     },
   

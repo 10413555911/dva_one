@@ -28,12 +28,29 @@
             border:1px solid #ccc;
             padding:10px;
             border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            >button{
+                min-width:80px;
+                max-width:160px;
+                padding: 0px 3px;
+                height: 30px;
+                background: #fff;
+                border:1px solid #0A40FD;
+                color:#0A40FD;
+                border-radius: 0;
+            }
             .btn_box{
                 height: 33px;
                 display: flex;
                 align-items: center;
                 width:200px;
                 justify-content: space-between;
+                .sub_btn{
+                    width: 100px;
+                    background: #0A40FD;
+                    color:#fff;
+                }
             }
         }
     }
