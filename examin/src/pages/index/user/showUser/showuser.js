@@ -1,10 +1,10 @@
 import React,{useEffect,useState} from "react"
 import {connect} from "dva"
-import {Form,Radio,Table,Tabs,Button} from 'antd';
+import {Table,Tabs,Button} from 'antd';
 import style from './showuser.scss'
 const { TabPane } = Tabs;
 function showuser(props){
-    const [loading,setloading]=useState(false)
+    const [loading]=useState(false)
     useEffect(()=>{
        props.getUserdata()
        props.getidentity()

@@ -1,22 +1,23 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'dva';
 import styles from './examDetails.scss';
 import { Form, Drawer, Select, Button } from 'antd';
 const { Option } = Select;
 function examDetails(props) {
     let { Allquestion } = props
-    if(Allquestion){
+    if (Allquestion) {
         localStorage.setItem('Allquestion', JSON.stringify(Allquestion)) //本地存储一下
     }
     const allquestion = JSON.parse(localStorage.getItem("Allquestion"))//获取本地存储
     const [visible, show] = useState(false)
     let del = (item) => {
-        props.del(item.subject_id)    
+        props.del(item.subject_id)
     }
     return (
-        <div className={styles.wrap}>
+        <div className={styles.wrap} >
             <Button className={styles.button} onClick={() => { show(true) }}>添加试题</Button>
             <Drawer
+            
                 title="Basic Drawer"
                 placement="right"
                 closable={visible}
