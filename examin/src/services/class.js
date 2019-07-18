@@ -1,13 +1,13 @@
 import request from '../utils/request'
-export function grade() {    //获取已经分配的教室的班级
+export function grade() {               //获取已经分配教室的班级
     return request.get('/manger/grade'
     )
 }
-export function room() {    //获取已经分配的教室的班级
+export function room() {                //获取全部教室
     return request.get('/manger/room'
     )
 }
-export function addgrade(payload) {    //获取已经分配的教室的班级
+export function addgrade(payload) {     //添加班级接口
     return request.post('/manger/grade', payload
     )
 }

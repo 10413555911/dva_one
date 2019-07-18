@@ -12,7 +12,7 @@ export default {
     //订阅
     subscriptions: {
         setup({ dispatch, history }) {  // eslint-disable-line
-          return history.listen(({ pathname }) => {   //监听地址栏    ！！！pathname是解构出来的
+          return history.listen(({ pathname }) => {         //监听地址栏    ！！！pathname是解构出来的
             // 1.判断去的页面是否是登陆页面
             if (pathname.indexOf('/login') === -1) {        //查找是不是login页面
               // 1.1 判断是否有登陆态
@@ -46,7 +46,7 @@ export default {
             }
             yield put({                       //put是等于调用同步里面的方法  
                 type: 'updataLogin',          //等于同步里面的函数名
-                payload: data.code        //这个是走了上面然后调用了updataLogin的值 在log页面进行了修改  成功改变为1 不成功为0
+                payload: data.code            //这个是走了上面然后调用了updataLogin的值 在log页面进行了修改  成功改变为1 不成功为0
             })
         }
     },
