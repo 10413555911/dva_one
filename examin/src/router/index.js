@@ -3,6 +3,7 @@ import questionsType from "../pages/index/questions/questionsType/questionsType"
 import watchQuestions from "../pages/index/questions/watchQuestions/watchQuestions"
 import addUser from "../pages/index/user/addUser/adduser"
 import showUser from "../pages/index/user/showUser/showuser"
+import Details from "../pages/index/questions/watchQuestions/details/details"
 const router=[
     {
         type:"试题管理",
@@ -14,10 +15,10 @@ const router=[
                 id:"router.questions.add",
                 title:"添加试题"
             },
-            // {
-            //     path: "/index/details/?id",
-            //     component: details,
-            // },
+            {
+                path: "/index/details/?id",
+                component: Details,
+            },
             {
                 path: "/index/questionsType",
                 component: questionsType,
