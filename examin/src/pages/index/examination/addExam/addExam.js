@@ -10,7 +10,7 @@ function addExam(props) {
     props.examType()   //考试类型
     props.subject()   //课程
   }, [])
-  let submit = () => {   //点击提交按钮 
+  let submit_s = () => {   //点击提交按钮 
     handleSubmit()  //调用提交接口
   }
   let handleSubmit = () => {
@@ -130,7 +130,7 @@ function addExam(props) {
             </div>
           </div>
         </div>
-        <Button className={styles.button} type="primary" onClick={()=>{submit}} htmlType="submit" >创建试卷</Button>
+        <Button className={styles.button} type="primary" onClick={()=>{submit_s()}} htmlType="submit" >创建试卷</Button>
       </div>
     </Form>
   )

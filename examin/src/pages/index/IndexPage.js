@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'dva';
 import Headers from '@/components/header/header'
 import style from './IndexPage.scss'
-import { Layout, Menu, Icon } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { Layout } from 'antd';
 import { Route, Switch } from 'dva/router';
 import router from "../../router/index"
 import MenuList from "@/components/MenuList/MenuList"
 const { Header, Content, Sider } = Layout;
-const { SubMenu } = Menu;
 let routerarr = [];
 for (let elem of router.values()) {
   routerarr.push(...elem.children)
@@ -70,9 +68,5 @@ IndexPage.propTypes = {
 let mapstateToProps = state => {
   return { ...state }
 }
-let mapdispatchToProps = dispatch => {
-  return {
-    
-  }
-}
-export default connect(mapstateToProps, mapdispatchToProps)(IndexPage);
+
+export default connect(mapstateToProps)(IndexPage);
