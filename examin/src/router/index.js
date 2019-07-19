@@ -8,6 +8,7 @@ import addroom from '../pages/index/class/addroom/addroom'
 import examList from '../pages/index/examination/examList/examList'
 // import compile from '../pages/index/questions/watchQuestions/compile/compile'
 import addExam from '../pages/index/examination/addExam/addExam'
+import studentment from '../pages/index/class/studentMent/studentMent'
 const router = [
     {
         type: "试题管理",
@@ -92,10 +93,10 @@ const router = [
                 title: "教室管理"
             },
             {
-                path: "/index/showUser",
-                component: showUser,
+                path: "/index/studentment",
+                component: studentment,
                 id: "router.class.student",
-                title: "班级管理"
+                title: "学生管理"
             }
         ]
     },

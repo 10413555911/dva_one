@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "dva"
 import style from './header.scss'
-import { Select, Modal ,Form,Input, Button,Dropdown} from "antd";
+import { Select, Modal, Form, Input, Button, Dropdown } from "antd";
 const { Option } = Select;
 function headers(props) {
-  const [userInfo,getuserInfo]=useState({})
-  useEffect(()=>{
+
+  //gz
+  let { img } = props
+  // console.log(img)
+
+
+
+  const [userInfo, getuserInfo] = useState({})
+  useEffect(() => {
     //props.updataUser()
     getuserInfo(props.userInfo.data)
-  },[props.userInfo])//可以设置监听
+  }, [props.userInfo])//可以设置监听
   let handleProvinceChange = value => {
     props.updataLocale(value)
   }
@@ -18,11 +25,17 @@ function headers(props) {
   let showupdata = () => {
     updateFlag(true)
   }
+  //gz
+  console.log(img)
   let handleOk = () => {
-    console.log("ok")
+    props.form.validateFields((err, values) => {
+      console.log(values.userId, img)
+      props.updataUser({
+        avatar: img,
+        user_id: values.userId
+      })
+    })
     updateFlag(false)
-    console.log(flag)
-
   }
   let handleCancel = () => {
     console.log("on")
@@ -30,8 +43,15 @@ function headers(props) {
     console.log(flag)
     // setflag(false)
   }
-  let handleSubmit=e=>{
+  let handleSubmit = e => {
     console.log(e)
+  }
+  //gz
+  let upimag = (e) => {
+
+    let form = new FormData()
+    form.append(e.target.files[0].name, e.target.files[0])
+    props.ImgChange(form)
   }
   const { getFieldDecorator } = props.form;
   return (
@@ -53,8 +73,8 @@ function headers(props) {
             </Select>
           </div>
           <div onClick={() => showupdata()}>
-            <img className={style.portrait} src={userInfo&&userInfo.avatar} alt="" />
-            <span>{userInfo&&userInfo.user_name}</span>
+            <img className={style.portrait} src={userInfo && userInfo.avatar} alt="" />
+            <span>{userInfo && userInfo.user_name}</span>
           </div>
           <Modal
             title="更改用户信息"
@@ -62,35 +82,42 @@ function headers(props) {
             onOk={handleOk}
             onCancel={handleCancel}
           >
-            <Form onSubmit={(e)=>handleSubmit(e)}>
+            <Form onSubmit={(e) => handleSubmit(e)}>
               <Form.Item label="用户ID">
                 {getFieldDecorator('userId', {
                   rules: [{ required: true, message: 'Please input your note!' }],
-                })(<Input value={userInfo&&userInfo.user_id} />)}
+                  initialValue: userInfo && userInfo.user_id
+                })(<Input />)}
               </Form.Item>
               <Form.Item label="用户名">
                 {getFieldDecorator('userNmae', {
                   rules: [{ required: true, message: 'Please input your note!' }],
+                  initialValue: ""
                 })(<Input />)}
               </Form.Item>
               <Form.Item label="密码">
                 {getFieldDecorator('userPwd', {
                   rules: [{ required: true, message: 'Please input your note!' }],
+                  initialValue: ""
                 })(<Input />)}
               </Form.Item>
               <Form.Item label="用户身份ID">
-                  {getFieldDecorator('identityId', {
-                    rules: [{ required: true, message: 'Please input your note!' }],
-                  })(<Input />)}
+                {getFieldDecorator('identityId', {
+                  rules: [{ required: true, message: 'Please input your note!' }],
+                  initialValue: ""
+                })(<Input />)}
               </Form.Item>
               <Form.Item label="用户头像">
-                <input type="file"/>
+                <input type="file" onChange={(e) => { upimag(e) }} />
               </Form.Item>
-              <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
+
+
+              {/* 保留一个按钮 */}
+              {/* <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
                 <Button type="primary" htmlType="submit">
                   Submit
                   </Button>
-              </Form.Item>
+              </Form.Item> */}
             </Form>
           </Modal>
         </div>
@@ -102,7 +129,8 @@ function headers(props) {
 const mapStateToProps = state => {
   return {
     ...state.global,
-    ...state.login
+    ...state.login,
+    ...state.user
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -113,11 +141,19 @@ const mapDispatchToProps = dispatch => {
         payload
       })
     },
-    updataUser:payload=>{
-        dispatch({
-          type:"user/updataUser",
-          payload
-        })
+    updataUser: payload => {
+      dispatch({
+        type: "user/updataUser",
+        payload
+      })
+    },
+    //GZ
+    ImgChange: payload => {
+      console.log(payload)
+      dispatch({
+        type: "user/changeImg",
+        payload
+      })
     }
   }
 }
