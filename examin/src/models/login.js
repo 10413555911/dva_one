@@ -1,4 +1,4 @@
-import { login } from '../services/index'
+import { login,getUserInfo} from '../services/index'
 import { routerRedux } from 'dva/router';
 import { setToken, getToken } from '@/utils/index'
 export default {
@@ -7,7 +7,8 @@ export default {
     namespace: 'login',
     //初始数据
     state: {
-        isLogin: -1
+        isLogin: -1,
+        userInfo:{},
     },
     //订阅
     subscriptions: {
@@ -33,6 +34,13 @@ export default {
                 }))
               }
             }
+            if(getToken()){
+              dispatch({
+                type:"login/getUserInfo"
+              })
+
+            }
+            
           });
         },
       },
@@ -48,13 +56,28 @@ export default {
                 type: 'updataLogin',          //等于同步里面的函数名
                 payload: data.code            //这个是走了上面然后调用了updataLogin的值 在log页面进行了修改  成功改变为1 不成功为0
             })
+        },
+        *getUserInfo({ payload, type }, { call, put ,select}){
+            let userInfo=yield select(state=>state.login.userInfo)
+            if(Object.keys(userInfo).length){
+              return;
+            }
+            let data=yield getUserInfo();
+            localStorage.setItem("userInfo",JSON.stringify(data.data))
+            yield put({
+              type:"updataUserInfo",
+              payload:data
+            })
         }
     },
     //同步
     reducers: {
         updataLogin(state, action) {
-            return { ...state, isLogin: action.payload };
+          return { ...state, isLogin: action.payload };
         },
+        updataUserInfo(state, action){
+          return { ...state, userInfo: action.payload };
+        }
     },
 
 };
