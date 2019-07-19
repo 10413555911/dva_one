@@ -3,16 +3,16 @@ import { connect } from "dva"
 import style from './header.scss'
 import { Select, Modal ,Form,Input, Button,Dropdown} from "antd";
 const { Option } = Select;
-let userInfo=JSON.parse(localStorage.getItem("userInfo")) 
-console.log(userInfo)
 function headers(props) {
+  const [userInfo,getuserInfo]=useState({})
   useEffect(()=>{
     //props.updataUser()
-  },[])
+    getuserInfo(props.userInfo.data)
+  },[props.userInfo])//可以设置监听
   let handleProvinceChange = value => {
     props.updataLocale(value)
   }
-
+  //console.log("16....",userInfo)
   const [flag, updateFlag] = useState(false)
 
   let showupdata = () => {
@@ -53,8 +53,8 @@ function headers(props) {
             </Select>
           </div>
           <div onClick={() => showupdata()}>
-            <img className={style.portrait} src={userInfo.avatar} alt="" />
-            <span>{userInfo.user_name}</span>
+            <img className={style.portrait} src={userInfo&&userInfo.avatar} alt="" />
+            <span>{userInfo&&userInfo.user_name}</span>
           </div>
           <Modal
             title="更改用户信息"
@@ -66,7 +66,7 @@ function headers(props) {
               <Form.Item label="用户ID">
                 {getFieldDecorator('userId', {
                   rules: [{ required: true, message: 'Please input your note!' }],
-                })(<Input />)}
+                })(<Input value={userInfo&&userInfo.user_id} />)}
               </Form.Item>
               <Form.Item label="用户名">
                 {getFieldDecorator('userNmae', {
@@ -101,7 +101,8 @@ function headers(props) {
 }
 const mapStateToProps = state => {
   return {
-    ...state.global
+    ...state.global,
+    ...state.login
   }
 }
 const mapDispatchToProps = dispatch => {

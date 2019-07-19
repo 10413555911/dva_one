@@ -34,9 +34,13 @@ export default {
                 }))
               }
             }
-            dispatch({
-              type:"login/getUserInfo"
-            })
+            if(getToken()){
+              dispatch({
+                type:"login/getUserInfo"
+              })
+
+            }
+            
           });
         },
       },
