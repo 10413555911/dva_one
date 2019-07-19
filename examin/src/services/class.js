@@ -30,7 +30,15 @@ export function addroom_ADD(payload) {    //获取全部教室
 }
 export function DelRoom(payload) {    //删除教室
     console.log(payload)
-    return request.delete('/manger/room/delete', { payload }
+    return request({
+        method: 'delete',
+        url: '/manger/room/delete',
+        data: payload
+    });
+}
+
+export function Allstudent() {    //获取全部学生
+    return request.get('/manger/Allstudent'
     )
 }
 

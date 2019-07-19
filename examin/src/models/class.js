@@ -1,12 +1,13 @@
 
-import { grade, room, addgrade, update_class, delete_class, addroom, addroom_ADD,DelRoom} from '../services/index'
+import { grade, room, addgrade, update_class, delete_class, addroom, addroom_ADD, DelRoom, Allstudent } from '../services/index'
 export default {
   namespace: 'class',
   state: {
     AllClass_name: '', //没有分配的教室
     Allroom: [],  //全部教室号
     messgae_code: -1,
-    addRoom: []
+    addRoom: [],
+    Allstudent_All: []
   },
   effects: {
     *grade({ payload }, { call, put }) {  //获取已经分配的班级
@@ -64,8 +65,16 @@ export default {
     },
     *DelRoom({ payload }, { call, put }) {   //删除教室
       let data = yield call(DelRoom, payload)
+      yield put({
+        type: 'addroom',
+      })
+    },
+    *Allstudent({ payload }, { call, put }) {   //获取全部学生
+      let data = yield call(Allstudent)
       console.log(data)
-
+      yield put({
+        type: 'student',
+      })
     },
 
   },
@@ -82,6 +91,9 @@ export default {
     },
     addRoom_code(state, action) {   //code嘛    问题是取反
       return { ...state, addRoom: action.payload };
+    },
+    student(state, action) {   //全部学生
+      return { ...state, Allstudent_All: action.payload };
     }
   },
 

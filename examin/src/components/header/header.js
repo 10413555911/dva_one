@@ -4,13 +4,9 @@ import style from './header.scss'
 import { Select, Modal, Form, Input, Button, Dropdown } from "antd";
 const { Option } = Select;
 function headers(props) {
-
   //gz
   let { img } = props
   // console.log(img)
-
-
-
   const [userInfo, getuserInfo] = useState({})
   useEffect(() => {
     //props.updataUser()
@@ -25,14 +21,13 @@ function headers(props) {
   let showupdata = () => {
     updateFlag(true)
   }
-  //gz
-  console.log(img)
+  //gz  提交更新信息
   let handleOk = () => {
     props.form.validateFields((err, values) => {
-      console.log(values.userId, img)
       props.updataUser({
         avatar: img,
-        user_id: values.userId
+        user_id: values.userId,
+        user_name: values.userNmae
       })
     })
     updateFlag(false)
@@ -46,9 +41,8 @@ function headers(props) {
   let handleSubmit = e => {
     console.log(e)
   }
-  //gz
+  //gz 上传头像
   let upimag = (e) => {
-
     let form = new FormData()
     form.append(e.target.files[0].name, e.target.files[0])
     props.ImgChange(form)
@@ -112,12 +106,7 @@ function headers(props) {
               </Form.Item>
 
 
-              {/* 保留一个按钮 */}
-              {/* <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                  </Button>
-              </Form.Item> */}
+
             </Form>
           </Modal>
         </div>
@@ -149,7 +138,6 @@ const mapDispatchToProps = dispatch => {
     },
     //GZ
     ImgChange: payload => {
-      console.log(payload)
       dispatch({
         type: "user/changeImg",
         payload

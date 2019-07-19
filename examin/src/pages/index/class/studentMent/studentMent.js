@@ -4,6 +4,8 @@ import styles from './studentMent.scss';
 import { Form, Input, Select, Button, Table } from 'antd'
 const { Option } = Select
 function Student(props) {
+    const { addRoom, AllClass_name } = props
+    console.log(AllClass_name)
     const columns = [
         {
             title: '姓名',
@@ -36,8 +38,10 @@ function Student(props) {
             key: '6',
         }
     ]
-
     useEffect(() => {
+        props.addroom_up()
+        props.grade()
+        props.Allstudent()
     }, [])
     // let { delateStudentIdList } = props.classmanagement
 
@@ -72,11 +76,11 @@ function Student(props) {
                                 placeholder="请选择教室号"
                             >
                                 {
-                                    // PlacementMangerRoomlist.map(item => {
-                                    //     return (
-                                    //         <Option value={item.room_id} key={item.room_id}>{item.room_text}</Option>
-                                    //     )
-                                    // })
+                                    addRoom.map(item => {
+                                        return (
+                                            <Option value={item.room_id} key={item.room_id}>{item.room_text}</Option>
+                                        )
+                                    })
                                 }
                             </Select>,
                         )}
@@ -90,13 +94,13 @@ function Student(props) {
                             <Select
                                 placeholder="班级名"
                             >
-                                {/* {
-                                    PlacementMangerGradeList.map(item => {
+                                {
+                                    AllClass_name && AllClass_name.map(item => {
                                         return (
                                             <Option value={item.grade_id} key={item.grade_id}>{item.grade_name}</Option>
                                         )
                                     })
-                                } */}
+                                }
                             </Select>,
                         )}
                     </Form.Item>
@@ -112,12 +116,26 @@ Student.propTypes = {
 };
 const mapStateToProps = state => {
     return {
-        ...state
+        ...state.class
     }
 }
 const mapDispachToProps = dispatch => {
     return {
-
+        addroom_up: () => {
+            dispatch({
+                type: 'class/addroom'
+            })
+        },
+        grade: () => {
+            dispatch({
+                type: 'class/grade'
+            })
+        },
+        Allstudent: () => {
+            dispatch({
+                type: 'class/Allstudent'
+            })
+        },
     }
 }
 export default connect(mapStateToProps, mapDispachToProps)(Form.create()(Student));

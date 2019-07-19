@@ -5,8 +5,7 @@ export function getUserInfo() {
 }
 //更新用户
 export function updataUser(payload) {
-    console.log('!!!!', payload)
-    return request.put("/user/user"), payload
+    return request.put("/user/user",payload)
 }
 
 //展示用户数据

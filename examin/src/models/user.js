@@ -107,6 +107,7 @@ export default {
     },
     //更新用户
     *updataUser({ payload }, { call, put }) {
+      console.log(payload)
       let data = yield call(updataUser, payload);
       yield put({
         type: "updatauser",
@@ -116,7 +117,6 @@ export default {
     //gz
     *changeImg({ payload }, { call, put }) {
       let data = yield call(changeImg, payload);
-      console.log(data.data[0].path)
       yield put({
         type: 'CImg',
         payload: data.data[0].path
@@ -157,7 +157,6 @@ export default {
       return { ...state, payload }
     },
     setIdApi(state, { payload }) {
-      console.log(payload)
       return { ...state, payload }
     },
     updatauser(state, { payload }) {
