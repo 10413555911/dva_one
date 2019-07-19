@@ -18,25 +18,28 @@ const router = [
                 path: "/index/addQuestions",
                 component: addQuestions,
                 id: "router.questions.add",
-                title: "添加试题"
+                title: "添加试题",
+                view_id: 'main-addQuestions'
             },
             // {
-            //     path: "/index/compile/:id",
+            //     path: "/index/compile",
             //     component: compile,
-            //     id: "router.questions.compile",
-            //     title: "试题详情"
+            //     title: "试题详情",
+            //     view_id: "main-questionsDetail"
             // },
             {
                 path: "/index/questionsType",
                 component: questionsType,
                 id: "router.questions.type",
-                title: "试题分类"
+                title: "试题分类",
+                view_id: "main-questionsType"
             },
             {
                 path: "/index/watchQuestions",
                 component: watchQuestions,
                 id: "router.questions.view",
-                title: "查看试题"
+                title: "查看试题",
+                view_id: "main-watchQuestions"
             }
         ]
     },
@@ -48,13 +51,15 @@ const router = [
                 path: "/index/addUser",
                 component: addUser,
                 id: "router.user.add",
-                title: "添加用户"
+                title: "添加用户",
+                view_id: "main-addUser"
             },
             {
                 path: "/index/showUser",
                 component: showUser,
                 id: "router.user.show",
-                title: "用户展示"
+                title: "用户展示",
+                view_id: "main-showUser"
             }
         ]
     },
@@ -66,13 +71,15 @@ const router = [
                 path: "/index/addExam",
                 component: addExam,
                 id: "router.exam.add",
-                title: "添加考试"
+                title: "添加考试",
+                view_id: "main-addExam"
             },
             {
                 path: "/index/examList",
                 component: examList,
                 id: "router.exam.list",
-                title: "试卷列表"
+                title: "试卷列表",
+                view_id: "main-examList"
             }
         ]
     },
@@ -84,19 +91,23 @@ const router = [
                 path: "/index/addClass",
                 component: addClass,
                 id: "router.class.add",
-                title: "班级管理"
+                title: "班级管理",
+                view_id: "main-grade"
             },
             {
                 path: "/index/addroom",
                 component: addroom,
                 id: "router.class.add",
-                title: "教室管理"
+                title: "教室管理",
+                view_id: "main-room"
+
             },
             {
                 path: "/index/studentment",
                 component: studentment,
                 id: "router.class.student",
-                title: "学生管理"
+                title: "学生管理",
+                view_id: "main-student"
             }
         ]
     },

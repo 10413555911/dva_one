@@ -50,7 +50,7 @@ export default {
     },
     *addroom({ payload }, { call, put }) {   //获取全部教室
       let data = yield call(addroom)
-      console.log(data)
+      // console.log(data)
       yield put({
         type: 'addRoom_code',
         payload: data.data

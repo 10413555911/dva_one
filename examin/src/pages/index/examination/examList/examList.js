@@ -90,7 +90,7 @@ function examList(props) {
             <Select style={{ width: '60%', marginLeft: '20px' }} >
               {
                 examTypeDate && examTypeDate.map((item) => {
-                  return <Option rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
+                  return <Option key={item.subject_id}   rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
                 }
                 )
               }

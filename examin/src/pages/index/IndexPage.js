@@ -12,6 +12,7 @@ for (let elem of router.values()) {
   routerarr.push(...elem.children)
 }
 function IndexPage(props) {
+  console.log(props.myView,props.forbiddenView)
   let headerText = () => {
     let text = props.location.pathname;
     switch (text) {
@@ -35,6 +36,9 @@ function IndexPage(props) {
   }
   useEffect(() => {
   })
+  if(!props.myView.length){
+    return null
+  }
   return (
     <div className={style.wrap}>
       <Headers></Headers>
@@ -50,12 +54,13 @@ function IndexPage(props) {
           <Content className={style.content}>
             {/* 路由视口存放 */}
             <Switch>
-              {/* <Route path="/index/Details" component={examDetails} /> */}
+            {/* 可以访问的路由 */}
               {
-                routerarr.map((item,i)=>
-                  <Route key={`r${i}`} path={item.path} component={item.component} />
-                )
+                props.myView.map(item=>{
+                  return   <Route key={item.view_id} path={item.path} component={item.component} />
+                })   
               }
+               {/* 不存在的路由 */}
             </Switch>
           </Content>
         </Layout>
@@ -63,10 +68,15 @@ function IndexPage(props) {
     </div>
   );
 }
+
 IndexPage.propTypes = {
 };
 let mapstateToProps = state => {
-  return { ...state }
+  return { 
+    myView:state.login.myView,
+    forbiddenView: state.login.forbiddenView
+   }
+
 }
 
 export default connect(mapstateToProps)(IndexPage);
