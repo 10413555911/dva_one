@@ -15,7 +15,6 @@ function headers(props) {
   let handleProvinceChange = value => {
     props.updataLocale(value)
   }
-  //console.log("16....",userInfo)
   const [flag, updateFlag] = useState(false)
 
   let showupdata = () => {
@@ -27,16 +26,12 @@ function headers(props) {
       props.updataUser({
         avatar: img,
         user_id: values.userId,
-        user_name: values.userNmae
       })
     })
     updateFlag(false)
   }
   let handleCancel = () => {
-    console.log("on")
     updateFlag(false)
-    console.log(flag)
-    // setflag(false)
   }
   let handleSubmit = e => {
     console.log(e)
@@ -55,9 +50,8 @@ function headers(props) {
           <img alt="" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" />
         </div>
         <div>
-          <div>
-            <Select
-              className={style.select}
+          <div  className={style.select}>
+            <Select 
               defaultValue="中文"
               style={{ width: 90 }}
               onChange={(v) => handleProvinceChange(v)}
