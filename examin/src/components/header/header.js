@@ -1,38 +1,66 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "dva"
 import style from './header.scss'
-import { Select, Modal ,Form,Input, Button,Dropdown} from "antd";
+import { Select, Modal ,Form,Input, Button,message,Avatar,Dropdown,Menu,Icon} from "antd";
 const { Option } = Select;
 function headers(props) {
   const [userInfo,getuserInfo]=useState({})
   useEffect(()=>{
     //props.updataUser()
     getuserInfo(props.userInfo.data)
+    
+
   },[props.userInfo])//可以设置监听
   let handleProvinceChange = value => {
     props.updataLocale(value)
   }
-  //console.log("16....",userInfo)
   const [flag, updateFlag] = useState(false)
 
   let showupdata = () => {
     updateFlag(true)
   }
   let handleOk = () => {
-    console.log("ok")
     updateFlag(false)
-    console.log(flag)
-
   }
   let handleCancel = () => {
-    console.log("on")
     updateFlag(false)
-    console.log(flag)
     // setflag(false)
   }
-  let handleSubmit=e=>{
-    console.log(e)
+    
+  
+  let changeavatar=e=>{
+    let files=e.target.files[0];
+    let reader=new FileReader();
+    reader.readAsDataURL(files);
+    reader.onload=function(){
+      props.getAvatar({"base64":this.result})
+    }
   }
+  let handleSubmit=e=>{
+    e.preventDefault();
+    props.form.validateFields((err, values) => {
+      console.log(values)
+      props.updataUser({
+          user_id:userInfo&&userInfo.user_id,
+          user_name:values.userNmae,
+          user_pwd:values.userPwd,
+          identity_id:values.identityId,
+          avatar:null
+        })
+        message.success(props.msg)
+    });
+  }
+  const menu = (
+    <Menu>
+      <Menu.Item>
+          更改头像
+      </Menu.Item>
+      <Menu.Item>
+         更改用户信息
+      </Menu.Item>
+    </Menu>
+  );
+  let defaultAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
   const { getFieldDecorator } = props.form;
   return (
     <div className={style.header}>
@@ -53,8 +81,12 @@ function headers(props) {
             </Select>
           </div>
           <div onClick={() => showupdata()}>
-            <img className={style.portrait} src={userInfo&&userInfo.avatar} alt="" />
-            <span>{userInfo&&userInfo.user_name}</span>
+            <Avatar src={userInfo&&userInfo.avatar?userInfo.avatar:defaultAvatar} />
+            <Dropdown overlay={menu}>
+              <a className="ant-dropdown-link" href="#">
+              {userInfo&&userInfo.user_name}<Icon type="down" />
+              </a>
+            </Dropdown>
           </div>
           <Modal
             title="更改用户信息"
@@ -64,13 +96,12 @@ function headers(props) {
           >
             <Form onSubmit={(e)=>handleSubmit(e)}>
               <Form.Item label="用户ID">
-                {getFieldDecorator('userId', {
-                  rules: [{ required: true, message: 'Please input your note!' }],
-                })(<Input value={userInfo&&userInfo.user_id} />)}
+              <Input placeholder={userInfo&&userInfo.user_id}/>
               </Form.Item>
               <Form.Item label="用户名">
                 {getFieldDecorator('userNmae', {
                   rules: [{ required: true, message: 'Please input your note!' }],
+
                 })(<Input />)}
               </Form.Item>
               <Form.Item label="密码">
@@ -84,7 +115,7 @@ function headers(props) {
                   })(<Input />)}
               </Form.Item>
               <Form.Item label="用户头像">
-                <input type="file"/>
+                  <input type="file" onChange={(e)=>changeavatar(e)}/>
               </Form.Item>
               <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
                 <Button type="primary" htmlType="submit">
@@ -95,14 +126,14 @@ function headers(props) {
           </Modal>
         </div>
       </div>
-
     </div>
   );
 }
 const mapStateToProps = state => {
   return {
     ...state.global,
-    ...state.login
+    ...state.login,
+    ...state.user
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -116,6 +147,12 @@ const mapDispatchToProps = dispatch => {
     updataUser:payload=>{
         dispatch({
           type:"user/updataUser",
+          payload
+        })
+    },
+    getAvatar:(payload)=>{
+        dispatch({
+          type:"user/getAvatar",
           payload
         })
     }

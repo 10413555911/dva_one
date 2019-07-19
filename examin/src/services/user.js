@@ -1,11 +1,11 @@
 import request from "../utils/request"
 //用户管理
-export function getUserInfo(){
+export function getInfo(){
     return request.get("/user/userInfo")
 }
 //更新用户
-export function updataUser(){
-    return request.put("/user/user")
+export function updataUser(params){
+    return request.put("/user/user",params)
 }
 
 //展示用户数据
@@ -52,4 +52,8 @@ export function authorityView(params){
 //给视图设定身份接口权限
 export function setIdentityApi(params){
     return request.post("/user/setIdentityApi",params)
+}
+//获取头像
+export function getAvatar(params){
+    request.post("http://123.206.55.50:11000/upload_base64",params)
 }

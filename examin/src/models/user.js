@@ -10,7 +10,8 @@ import {
   addidentity,
   authorityApi,
   authorityView,
-  setIdentityApi
+  setIdentityApi,
+  getAvatar
 } from "../services/user"
 export default {
     namespace: 'user',
@@ -21,6 +22,8 @@ export default {
         api_identity:[],//展示身份和api权限关系
         viewdata:[],//展示视图权限数据
         view_identity:[],//展示身份和视图权限数据
+        Avater:"",
+        msg:""
 
     },
   
@@ -94,6 +97,7 @@ export default {
           payload:data
         })
       },
+      //添加身份api接口权限
       *setIdentityApi({ payload }, { call, put }){
         let data=yield call(setIdentityApi,payload);
         yield put({
@@ -108,6 +112,15 @@ export default {
             type:"updatauser",
             payload:data
           })
+          
+      },
+      //添加头像接口
+      *getAvatar({ payload }, { call, put }){
+        let data=yield call(getAvatar,payload);
+        yield put({
+          type:"getavatar",
+          payload:data
+        })
       }
     },
   
@@ -147,9 +160,15 @@ export default {
           console.log(payload)
           return {...state,payload}
         },
+        //请求头像
+        getavatar(state,{payload}){
+          return {...state,Avater:payload}
+        },
+        //更新用户
         updatauser(state, {payload}){
-          return {...state,payload}
+          return {...state,msg:payload.mag}
         }
+        
     },
   
   };

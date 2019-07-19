@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from "dva"
 import style from "../../pages/index/user/addUser/adduser.scss"
-import { Input, Select, Layout, Button, Form, Modal, Tabs, Table } from "antd"
-const { Header, Footer, Sider, Content } = Layout;
+import { Select, Button, Form} from "antd"
 const { Option } = Select;
-const { TabPane } = Tabs;
 
 class Tables6 extends React.Component {
     constructor(props) {
@@ -37,7 +35,7 @@ class Tables6 extends React.Component {
         })
     }
     render() {
-        const { identitylist, userlist, apilist,view_identity } = this.props
+        const { identitylist,apilist} = this.props
         const { getFieldDecorator } = this.props.form;
         return (
             <React.Fragment>
