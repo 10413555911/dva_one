@@ -81,7 +81,7 @@ function addroom(props) {
 
             </div>
             <div className={styles.tables}>
-                <Table columns={columns} dataSource={addRoom} rowKey='room_id' />
+                <Table columns={columns} dataSource={Object.values(addRoom)} rowKey='room_id' />
             </div>
         </div>
     )

@@ -89,8 +89,8 @@ function examList(props) {
             <span>考试类型:</span>
             <Select style={{ width: '60%', marginLeft: '20px' }} >
               {
-                examTypeDate && examTypeDate.map((item) => {
-                  return <Option key={item.subject_id}   rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
+                examTypeDate && examTypeDate.map((item,id) => {
+                  return <Option key={id}   rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
                 }
                 )
               }
@@ -100,8 +100,8 @@ function examList(props) {
             <span>课程:</span>
             <Select style={{ width: '60%', marginLeft: '20px' }}>
               {
-                TypeList && TypeList.map((item) => {
-                  return <Option key={item.subject_id} value={item.subject_id}>{item.subject_text}</Option>
+                TypeList && TypeList.map((item,i) => {
+                  return <Option key={i} value={item.subject_id}>{item.subject_text}</Option>
                 }
                 )
               }

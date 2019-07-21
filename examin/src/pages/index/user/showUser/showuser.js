@@ -14,10 +14,7 @@ function showuser(props){
        props.view_authority_relation()
        //setloading(true)
     },[])
-    console.log("user",props)
     const {userlist,identitylist,apilist,api_identity,viewdata,view_identity}=props;
-    //userlist.length>0 ? setloading(false) : setloading(true)
-    console.log(identitylist)
     const [uid,setuId]=useState("");
     let handleFormLayoutChange = e => {
         setuId(e.target.value)

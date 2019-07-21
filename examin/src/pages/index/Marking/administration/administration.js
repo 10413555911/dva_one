@@ -79,7 +79,7 @@ function administration(props) {
                 </Form>
                 <div className={styles.cont}>
                     <h4>试题列表</h4>
-                    <Table columns={columns} dataSource={null} />
+                    <Table columns={(columns)} dataSource={null} />
                 </div>
             </div>
         </div>

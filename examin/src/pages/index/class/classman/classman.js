@@ -227,7 +227,7 @@ function classman(props) {
                 </Modal>
             </div>
             <div className={styles.tables}>
-                <Table columns={columns} dataSource={AllClass_name} rowKey='room_id' />
+                <Table columns={columns} dataSource={Object.values(AllClass_name)} rowKey='room_id' />
             </div>
         </div>
     )

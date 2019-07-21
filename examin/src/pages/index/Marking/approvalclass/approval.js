@@ -63,7 +63,7 @@ function paper(props) {
     return (
         <>
             <div className={styles.content}>
-                <Table columns={columns} dataSource={AllClass_name} rowKey={"grade_id"} />
+                <Table columns={columns} dataSource={Object.values(AllClass_name)} rowKey={"grade_id"} />
             </div>
         </>
     );
