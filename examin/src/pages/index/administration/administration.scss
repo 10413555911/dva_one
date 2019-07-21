@@ -1,0 +1,21 @@
+.wrap {
+  width: 97%;
+  height: 100%;
+  padding: 15px;
+  overflow-y: auto;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.input {
+  margin-left: 50px;
+}
+.button {
+  background: linear-gradient(-90deg, #4e75ff, #0139fd);
+  width: 120px;
+}
+.cont {
+  margin-top: 30px;
+}

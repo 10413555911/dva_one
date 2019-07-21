@@ -6,9 +6,10 @@ import showUser from "../pages/index/user/showUser/showuser"
 import addClass from '../pages/index/class/classman/classman'
 import addroom from '../pages/index/class/addroom/addroom'
 import examList from '../pages/index/examination/examList/examList'
-// import compile from '../pages/index/questions/watchQuestions/compile/compile'
+import administration from '../pages/index/administration/administration'
 import addExam from '../pages/index/examination/addExam/addExam'
 import studentment from '../pages/index/class/studentMent/studentMent'
+
 const router = [
     {
         type: "试题管理",
@@ -21,12 +22,7 @@ const router = [
                 title: "添加试题",
                 view_id: 'main-addQuestions'
             },
-            // {
-            //     path: "/index/compile",
-            //     component: compile,
-            //     title: "试题详情",
-            //     view_id: "main-questionsDetail"
-            // },
+           
             {
                 path: "/index/questionsType",
                 component: questionsType,
@@ -116,13 +112,15 @@ const router = [
         id: "router.examination",
         children: [
             {
-                path: "/index/showUser",
-                component: showUser,
+                path: "/index/administration",
+                component: administration,
                 id: "router.examination.awat",
-                title: "阅卷管理"
+                title: "阅卷管理",
+                view_id: "main-examPaperClassmate"
             }
         ]
     },
+
 
 ]
 export default router;

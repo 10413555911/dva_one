@@ -38,7 +38,7 @@ export function DelRoom(payload) {    //删除教室
 }
 
 export function Allstudent() {    //获取全部学生
-    return request.get('/manger/Allstudent'
+    return request.get('/manger/student'
     )
 }
 
