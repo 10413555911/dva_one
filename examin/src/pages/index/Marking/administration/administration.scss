@@ -9,9 +9,13 @@
   flex-direction: column;
   background: #fff;
 }
-.btn {
-  width: 120px;
-  height: 45px;
+.input {
+  margin-left: 50px;
 }
-
-
+.button {
+  background: linear-gradient(-90deg, #4e75ff, #0139fd);
+  width: 120px;
+}
+.cont {
+  margin-top: 30px;
+}

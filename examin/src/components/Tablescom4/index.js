@@ -1,10 +1,8 @@
 import React from 'react';
 import {connect} from "dva"
 import style from  "../../pages/index/user/addUser/adduser.scss"
-import {Select,Button ,Form} from "antd"
-// const { Header, Footer, Sider, Content } = Layout;
+import { Select, Button ,Form} from "antd"
 const { Option } = Select;
-// const { TabPane } = Tabs;
 
 class Tables4 extends React.Component {
     constructor(props) {
