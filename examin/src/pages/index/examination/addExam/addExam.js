@@ -5,6 +5,7 @@ import { Form, InputNumber, Input, Select, DatePicker, Button } from 'antd';
 const { Option } = Select;
 function addExam(props) {
   let { examTypeDate, TypeList } = props
+  console.log(TypeList)
   const { getFieldDecorator } = props.form; //高阶组价方法
   useEffect(() => {
     props.examType()   //考试类型
@@ -17,12 +18,12 @@ function addExam(props) {
     props.form.validateFields((err, values) => {
       props.history.push('/index/Details_texts')  //跳转详情页
       props.addexam({
-        start_time:start,
-        end_time:end,
-        number:values.number,
-        subject_id:values.subject_id,
-        exam_id:values.exam_id,
-        title:values.titleText
+        start_time: start,
+        end_time: end,
+        number: values.number,
+        subject_id: values.subject_id,
+        exam_id: values.exam_id,
+        title: values.titleText
       })
     })
   }
@@ -130,13 +131,13 @@ function addExam(props) {
             </div>
           </div>
         </div>
-        <Button className={styles.button} type="primary" onClick={()=>{submit_s()}} htmlType="submit" >创建试卷</Button>
+        <Button className={styles.button} type="primary" onClick={() => { submit_s() }} htmlType="submit" >创建试卷</Button>
       </div>
     </Form>
   )
 }
 const mapStateToProps = state => {
-  return { ...state.subject,...state.exam }
+  return { ...state.subject, ...state.exam }
 }
 const mapDispatchToPorps = dispatch => {
   return {
@@ -147,7 +148,7 @@ const mapDispatchToPorps = dispatch => {
     },
     subject: () => {
       dispatch({
-        type: 'subject/subject'
+        type: 'subject/subJect'
       })
     },
     addexam: (payload) => { //调用添加试题接口

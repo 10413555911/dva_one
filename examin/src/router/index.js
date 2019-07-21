@@ -3,104 +3,123 @@ import questionsType from "../pages/index/questions/questionsType/questionsType"
 import watchQuestions from "../pages/index/questions/watchQuestions/watchQuestions"
 import addUser from "../pages/index/user/addUser/adduser"
 import showUser from "../pages/index/user/showUser/showuser"
-const router=[
+import addClass from '../pages/index/class/classman/classman'
+import addroom from '../pages/index/class/addroom/addroom'
+import examList from '../pages/index/examination/examList/examList'
+// import compile from '../pages/index/questions/watchQuestions/compile/compile'
+import addExam from '../pages/index/examination/addExam/addExam'
+import studentment from '../pages/index/class/studentMent/studentMent'
+const router = [
     {
-        type:"试题管理",
-        id:"router.questions",
-        children:[
+        type: "试题管理",
+        id: "router.questions",
+        children: [
             {
-                path:"/index/addQuestions",
-                component:addQuestions,
-                id:"router.questions.add",
-                title:"添加试题"
+                path: "/index/addQuestions",
+                component: addQuestions,
+                id: "router.questions.add",
+                title: "添加试题",
+                view_id: 'main-addQuestions'
             },
             // {
-            //     path: "/index/details/?id",
-            //     component: details,
+            //     path: "/index/compile",
+            //     component: compile,
+            //     title: "试题详情",
+            //     view_id: "main-questionsDetail"
             // },
             {
                 path: "/index/questionsType",
                 component: questionsType,
-                id:"router.questions.type",
-                title:"试题分类"
+                id: "router.questions.type",
+                title: "试题分类",
+                view_id: "main-questionsType"
             },
             {
-                path:"/index/watchQuestions",
-                component:watchQuestions,
-                id:"router.questions.view",
-                title:"查看试题"
+                path: "/index/watchQuestions",
+                component: watchQuestions,
+                id: "router.questions.view",
+                title: "查看试题",
+                view_id: "main-watchQuestions"
             }
         ]
     },
     {
-        type:"用户管理",
-        id:"router.user",
-        children:[
+        type: "用户管理",
+        id: "router.user",
+        children: [
             {
-                path:"/index/addUser",
-                component:addUser,
-                id:"router.user.add",
-                title:"添加用户"
+                path: "/index/addUser",
+                component: addUser,
+                id: "router.user.add",
+                title: "添加用户",
+                view_id: "main-addUser"
             },
             {
                 path: "/index/showUser",
                 component: showUser,
-                id:"router.user.show",
-                title:"用户展示"
+                id: "router.user.show",
+                title: "用户展示",
+                view_id: "main-showUser"
             }
         ]
     },
     {
-        type:"考试管理",
-        id:"router.exam",
-        children:[
+        type: "考试管理",
+        id: "router.exam",
+        children: [
             {
-                path:"/index/addExam",
-                component:questionsType,
-                id:"router.exam.add",
-                title:"添加考试" 
+                path: "/index/addExam",
+                component: addExam,
+                id: "router.exam.add",
+                title: "添加考试",
+                view_id: "main-addExam"
             },
-            {    
-                path:"/index/examList",
-                component:questionsType,
-                id:"router.exam.list",
-                title:"试卷列表" 
+            {
+                path: "/index/examList",
+                component: examList,
+                id: "router.exam.list",
+                title: "试卷列表",
+                view_id: "main-examList"
             }
         ]
     },
     {
-       type:"班级管理",
-       id:"router.class",
-       children:[
-           {
-                path:"/index/showUser",
-                component:showUser,
-                id:"router.class.add",
-                title:"班级管理"
-            },
-           {
-                path:"/index/showUser",
-                component:showUser,
-                id:"router.class.classroom",
-                title:"班级管理"
+        type: "班级管理",
+        id: "router.class",
+        children: [
+            {
+                path: "/index/addClass",
+                component: addClass,
+                id: "router.class.add",
+                title: "班级管理",
+                view_id: "main-grade"
             },
             {
-                path:"/index/showUser",
-                component:showUser,
-                id:"router.class.student",
-                title:"班级管理"
+                path: "/index/addroom",
+                component: addroom,
+                id: "router.class.add",
+                title: "教室管理",
+                view_id: "main-room"
+
+            },
+            {
+                path: "/index/studentment",
+                component: studentment,
+                id: "router.class.student",
+                title: "学生管理",
+                view_id: "main-student"
             }
         ]
     },
     {
-        type:"阅卷管理",
-        id:"router.examination",
-        children:[
+        type: "阅卷管理",
+        id: "router.examination",
+        children: [
             {
-                path:"/index/showUser",
-                component:showUser,
-                id:"router.examination.awat",
-                title:"阅卷管理"
+                path: "/index/showUser",
+                component: showUser,
+                id: "router.examination.awat",
+                title: "阅卷管理"
             }
         ]
     },

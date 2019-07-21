@@ -6,6 +6,7 @@ const { Option } = Select;
 const ButtonGroup = Button.Group;
 function examList(props) {
   let { examTypeDate, TypeList, obj } = props
+  console.log(obj)
   useEffect(() => {
     props.examType()
     props.subject()
@@ -77,7 +78,7 @@ function examList(props) {
       title: '详情',
       dataIndex: 'end_time',
       key: 5,
-      render: (item) => { return <div className={styles.dire} onClick={() => {Tochild(item)}}>详情</div> }
+      render: (item) => { return <div className={styles.dire} onClick={() => { Tochild(item) }}>详情</div> }
     }
   ];
   return (
@@ -89,7 +90,7 @@ function examList(props) {
             <Select style={{ width: '60%', marginLeft: '20px' }} >
               {
                 examTypeDate && examTypeDate.map((item) => {
-                  return <Option rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
+                  return <Option key={item.subject_id}   rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
                 }
                 )
               }
@@ -147,7 +148,7 @@ const mapDispatchToProps = dispatch => {
     },
     subject: () => {
       dispatch({
-        type: 'subject/subject'
+        type: 'subject/subJect'
       })
     },
     examList: () => {

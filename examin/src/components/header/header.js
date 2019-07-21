@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "dva"
 import style from './header.scss'
-import { Select, Modal ,Form,Input, Button,message,Avatar,Dropdown,Menu,Icon} from "antd";
+import { Select, Modal, Form, Input } from "antd";
 const { Option } = Select;
 function headers(props) {
-  const [userInfo,getuserInfo]=useState({})
-  useEffect(()=>{
+  //gz
+  let { img } = props
+  // console.log(img)
+  const [userInfo, getuserInfo] = useState({})
+  useEffect(() => {
     //props.updataUser()
     getuserInfo(props.userInfo.data)
-    
-
-  },[props.userInfo])//可以设置监听
+  }, [props.userInfo])//可以设置监听
   let handleProvinceChange = value => {
     props.updataLocale(value)
   }
@@ -19,48 +20,30 @@ function headers(props) {
   let showupdata = () => {
     updateFlag(true)
   }
+  //gz  提交更新信息
   let handleOk = () => {
+    props.form.validateFields((err, values) => {
+      props.updataUser({
+        avatar: img,
+        user_id: values.userId,
+        user_name: values.userNmae
+      })
+    })
     updateFlag(false)
   }
   let handleCancel = () => {
     updateFlag(false)
     // setflag(false)
   }
-    
-  
-  let changeavatar=e=>{
-    let files=e.target.files[0];
-    let reader=new FileReader();
-    reader.readAsDataURL(files);
-    reader.onload=function(){
-      props.getAvatar({"base64":this.result})
-    }
+  let handleSubmit = e => {
+    console.log(e)
   }
-  let handleSubmit=e=>{
-    e.preventDefault();
-    props.form.validateFields((err, values) => {
-      console.log(values)
-      props.updataUser({
-          user_id:userInfo&&userInfo.user_id,
-          user_name:values.userNmae,
-          user_pwd:values.userPwd,
-          identity_id:values.identityId,
-          avatar:null
-        })
-        message.success(props.msg)
-    });
+  //gz 上传头像
+  let upimag = (e) => {
+    let form = new FormData()
+    form.append(e.target.files[0].name, e.target.files[0])
+    props.ImgChange(form)
   }
-  const menu = (
-    <Menu>
-      <Menu.Item>
-          更改头像
-      </Menu.Item>
-      <Menu.Item>
-         更改用户信息
-      </Menu.Item>
-    </Menu>
-  );
-  let defaultAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
   const { getFieldDecorator } = props.form;
   return (
     <div className={style.header}>
@@ -81,12 +64,8 @@ function headers(props) {
             </Select>
           </div>
           <div onClick={() => showupdata()}>
-            <Avatar src={userInfo&&userInfo.avatar?userInfo.avatar:defaultAvatar} />
-            <Dropdown overlay={menu}>
-              <a className="ant-dropdown-link" href="#">
-              {userInfo&&userInfo.user_name}<Icon type="down" />
-              </a>
-            </Dropdown>
+            <img className={style.portrait} src={userInfo && userInfo.avatar} alt="" />
+            <span>{userInfo && userInfo.user_name}</span>
           </div>
           <Modal
             title="更改用户信息"
@@ -94,34 +73,37 @@ function headers(props) {
             onOk={handleOk}
             onCancel={handleCancel}
           >
-            <Form onSubmit={(e)=>handleSubmit(e)}>
+            <Form onSubmit={(e) => handleSubmit(e)}>
               <Form.Item label="用户ID">
-              <Input placeholder={userInfo&&userInfo.user_id}/>
+                {getFieldDecorator('userId', {
+                  rules: [{ required: true, message: 'Please input your note!' }],
+                  initialValue: userInfo && userInfo.user_id
+                })(<Input />)}
               </Form.Item>
               <Form.Item label="用户名">
                 {getFieldDecorator('userNmae', {
                   rules: [{ required: true, message: 'Please input your note!' }],
-
+                  initialValue: ""
                 })(<Input />)}
               </Form.Item>
               <Form.Item label="密码">
                 {getFieldDecorator('userPwd', {
                   rules: [{ required: true, message: 'Please input your note!' }],
+                  initialValue: ""
                 })(<Input />)}
               </Form.Item>
               <Form.Item label="用户身份ID">
-                  {getFieldDecorator('identityId', {
-                    rules: [{ required: true, message: 'Please input your note!' }],
-                  })(<Input />)}
+                {getFieldDecorator('identityId', {
+                  rules: [{ required: true, message: 'Please input your note!' }],
+                  initialValue: ""
+                })(<Input />)}
               </Form.Item>
               <Form.Item label="用户头像">
-                  <input type="file" onChange={(e)=>changeavatar(e)}/>
+                <input type="file" onChange={(e) => { upimag(e) }} />
               </Form.Item>
-              <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                  </Button>
-              </Form.Item>
+
+
+
             </Form>
           </Modal>
         </div>
@@ -144,17 +126,18 @@ const mapDispatchToProps = dispatch => {
         payload
       })
     },
-    updataUser:payload=>{
-        dispatch({
-          type:"user/updataUser",
-          payload
-        })
+    updataUser: payload => {
+      dispatch({
+        type: "user/updataUser",
+        payload
+      })
     },
-    getAvatar:(payload)=>{
-        dispatch({
-          type:"user/getAvatar",
-          payload
-        })
+    //GZ
+    ImgChange: payload => {
+      dispatch({
+        type: "user/changeImg",
+        payload
+      })
     }
   }
 }
