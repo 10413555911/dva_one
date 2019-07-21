@@ -12,7 +12,6 @@ for (let elem of router.values()) {
   routerarr.push(...elem.children)
 }
 function IndexPage(props) {
-  console.log(props.myView,props.forbiddenView)
   let headerText = () => {
     let text = props.location.pathname;
     switch (text) {
@@ -26,16 +25,6 @@ function IndexPage(props) {
         return "添加用户";
       case "/index/showUser":
         return "用户展示";
-      case "/index/addExam":
-        return "添加考试";
-      case "/index/examList":
-        return "考试列表";
-      case "/index/addClass":
-        return "班级管理";
-      case "/index/addroom":
-        return "班级管理";  
-      case "/index/studentment":
-        return "学生管理";
       case "/index/compile":
         return "编辑"
       default:
@@ -44,7 +33,7 @@ function IndexPage(props) {
   }
   useEffect(() => {
   })
-  if(!props.myView.length){
+  if (!props.myView.length) {
     return null
   }
   return (
@@ -53,7 +42,7 @@ function IndexPage(props) {
       {/* 菜单 */}
       <Layout className={style.main}>
         <Sider>
-            <MenuList/>
+          <MenuList />
         </Sider>
         <Layout className={style.section}>
           <Header style={{ background: '#fff', padding: 0 }} >
@@ -62,13 +51,13 @@ function IndexPage(props) {
           <Content className={style.content}>
             {/* 路由视口存放 */}
             <Switch>
-            {/* 可以访问的路由 */}
+              {/* 可以访问的路由 */}
               {
-                props.myView.map(item=>{
-                  return   <Route key={item.view_id} path={item.path} component={item.component} />
-                })   
+                props.myView.map(item => {
+                  return <Route key={item.view_id} path={item.path} component={item.component} />
+                })
               }
-               {/* 不存在的路由 */}
+              {/* 不存在的路由 */}
             </Switch>
           </Content>
         </Layout>
@@ -80,10 +69,10 @@ function IndexPage(props) {
 IndexPage.propTypes = {
 };
 let mapstateToProps = state => {
-  return { 
-    myView:state.login.myView,
+  return {
+    myView: state.login.myView,
     forbiddenView: state.login.forbiddenView
-   }
+  }
 
 }
 

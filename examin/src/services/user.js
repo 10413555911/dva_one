@@ -1,11 +1,11 @@
 import request from "../utils/request"
 //用户管理
-export function getUserInfo() {
+export function getInfo(){
     return request.get("/user/userInfo")
 }
 //更新用户
-export function updataUser(payload) {
-    return request.put("/user/user",payload)
+export function updataUser(params){
+    return request.put("/user/user",params)
 }
 
 //展示用户数据

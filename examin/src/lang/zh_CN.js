@@ -11,7 +11,7 @@ export default {
     "router.exam":"考试管理",
     "router.exam.add":"添加考试",
     "router.exam.list":"考试列表",
-
+    'router.class.addlist': '添加试卷',
     "router.class":"班级管理",
     "router.class.add":"班级管理",
     "router.class.classroom":"教室管理",

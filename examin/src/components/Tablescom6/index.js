@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from "dva"
 import style from "../../pages/index/user/addUser/adduser.scss"
-import { Select, Button, Form} from "antd"
-const {Option}=Select
+import {Select, Button, Form } from "antd"
+
+const { Option } = Select;
+
+
 class Tables6 extends React.Component {
     constructor(props) {
         super(props);

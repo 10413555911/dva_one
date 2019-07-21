@@ -80,7 +80,7 @@ function addroom(props) {
                 </Modal>
 
             </div>
-            <div classNanme={styles.tables}>
+            <div className={styles.tables}>
                 <Table columns={columns} dataSource={addRoom} rowKey='room_id' />
             </div>
         </div>

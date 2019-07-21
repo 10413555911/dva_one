@@ -4,7 +4,6 @@ import styles from './administration.scss';
 import { Form, Select, Button, Table } from 'antd'
 const { Option } = Select
 function administration(props) {
-
     // let {approvalList} = props.markingmanagement
     //console.log(approvalList, "status.....")
     const columns = [
@@ -40,22 +39,21 @@ function administration(props) {
         },
         {
             title: '操作',
-            render: (item)=><a onClick={()=>nextMarking(item)}>批卷</a>,
+            render: (item) => <a onClick={() => nextMarking(item)}>批卷</a>,
             key: '7',
         }
     ];
     useEffect(() => {
- 
+
         //props.getStudentData()
 
     }, [])
-    let nextMarking = (item) =>{
+    let nextMarking = (item) => {
         props.history.push('/home/marking?id=' + item.exam_student_id)
     }
     let id = props.location.search.split("&&")[0].split("=")[1]
-    
-    //console.log(props, "classmate...........")
     return (
+
         <div className={styles.wrap}>
             <div className={styles.top}>
                 <Form layout="inline">

@@ -1,11 +1,7 @@
 import React from 'react';
 import {connect} from "dva"
 import style from  "../../pages/index/user/addUser/adduser.scss"
-import {Input, Select, Layout,Button ,Form, Modal,Tabs,Table} from "antd"
-const { Header, Footer, Sider, Content } = Layout;
-const { Option } = Select;
-const { TabPane } = Tabs;
-
+import {Input,Button ,Form} from "antd"
 class Tables2 extends React.Component {
     constructor(props) {
         super(props);

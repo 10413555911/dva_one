@@ -65,7 +65,7 @@ function addExam(props) {
                 <Select style={{ width: 120 }}>
                   {
                     examTypeDate.map((item, index) => {
-                      return <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
+                      return <Option  key={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
                     })
                   }
                 </Select>
@@ -84,7 +84,7 @@ function addExam(props) {
                 <Select style={{ width: 120 }}>
                   {
                     TypeList.map((item, index) => {
-                      return <Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
+                      return <Option value={item.subject_id} key={index}>{item.subject_text}</Option>
                     })
                   }
                 </Select>

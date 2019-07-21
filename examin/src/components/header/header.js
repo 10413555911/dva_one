@@ -4,7 +4,6 @@ import style from './header.scss'
 import { Select, Modal, Form, Input } from "antd";
 const { Option } = Select;
 function headers(props) {
-  //gz
   let { img } = props
   // console.log(img)
   const [userInfo, getuserInfo] = useState({})
@@ -20,7 +19,6 @@ function headers(props) {
   let showupdata = () => {
     updateFlag(true)
   }
-  //gz  提交更新信息
   let handleOk = () => {
     props.form.validateFields((err, values) => {
       props.updataUser({
@@ -98,9 +96,6 @@ function headers(props) {
               <Form.Item label="用户头像">
                 <input type="file" onChange={(e) => { upimag(e) }} />
               </Form.Item>
-
-
-
             </Form>
           </Modal>
         </div>
