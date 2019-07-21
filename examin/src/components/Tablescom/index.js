@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from "dva"
 import style from  "../../pages/index/user/addUser/adduser.scss"
-import {Input, Select, Layout,Button ,Form, Modal,Tabs,Table} from "antd"
-const { Header, Footer, Sider, Content } = Layout;
+import {Input, Select,Button ,Form,Tabs} from "antd"
 const { Option } = Select;
 const { TabPane } = Tabs;
 

@@ -53,8 +53,6 @@ function administration(props) {
         props.history.push('/home/marking?id=' + item.exam_student_id)
     }
     let id = props.location.search.split("&&")[0].split("=")[1]
-    
-    //console.log(props, "classmate...........")
     return (
         <div className={styles.wrap}>
             <div className={styles.top}>

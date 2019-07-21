@@ -9,7 +9,7 @@ function classman(props) {
     const [visible_change, showVisible_change] = useState(false)  //change弹框显示
     const [classvale, classvale_change] = useState()  //修改班级的数据
     let { AllClass_name, TypeList, Allroom, messgae_code } = props //获取教师
-    console.log(AllClass_name) //应该渲染的数据
+    // console.log(AllClass_name) //应该渲染的数据
     useEffect(() => {
         props.AllClass()
         props.examType()   //考试类型
@@ -27,7 +27,6 @@ function classman(props) {
         }
     }
     let changes = (index) => {  //点击修改
-
         classvale_change(AllClass_name[index])
         showVisible_change(true)
     }
@@ -227,7 +226,7 @@ function classman(props) {
 
                 </Modal>
             </div>
-            <div classNanme={styles.tables}>
+            <div className={styles.tables}>
                 <Table columns={columns} dataSource={AllClass_name} rowKey='room_id' />
             </div>
         </div>

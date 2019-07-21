@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "dva"
 import style from './header.scss'
-import { Select, Modal, Form, Input, Button, Dropdown } from "antd";
+import { Select, Modal, Form, Input } from "antd";
 const { Option } = Select;
 function headers(props) {
   //gz
@@ -98,9 +98,6 @@ function headers(props) {
               <Form.Item label="用户头像">
                 <input type="file" onChange={(e) => { upimag(e) }} />
               </Form.Item>
-
-
-
             </Form>
           </Modal>
         </div>

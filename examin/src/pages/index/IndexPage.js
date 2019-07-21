@@ -12,7 +12,6 @@ for (let elem of router.values()) {
   routerarr.push(...elem.children)
 }
 function IndexPage(props) {
-  console.log(props.myView,props.forbiddenView)
   let headerText = () => {
     let text = props.location.pathname;
     switch (text) {
@@ -36,7 +35,7 @@ function IndexPage(props) {
   }
   useEffect(() => {
   })
-  if(!props.myView.length){
+  if (!props.myView.length) {
     return null
   }
   return (
@@ -45,7 +44,7 @@ function IndexPage(props) {
       {/* 菜单 */}
       <Layout className={style.main}>
         <Sider>
-            <MenuList/>
+          <MenuList />
         </Sider>
         <Layout className={style.section}>
           <Header style={{ background: '#fff', padding: 0 }} >
@@ -54,13 +53,13 @@ function IndexPage(props) {
           <Content className={style.content}>
             {/* 路由视口存放 */}
             <Switch>
-            {/* 可以访问的路由 */}
+              {/* 可以访问的路由 */}
               {
-                props.myView.map(item=>{
-                  return   <Route key={item.view_id} path={item.path} component={item.component} />
-                })   
+                props.myView.map(item => {
+                  return <Route key={item.view_id} path={item.path} component={item.component} />
+                })
               }
-               {/* 不存在的路由 */}
+              {/* 不存在的路由 */}
             </Switch>
           </Content>
         </Layout>
@@ -72,10 +71,10 @@ function IndexPage(props) {
 IndexPage.propTypes = {
 };
 let mapstateToProps = state => {
-  return { 
-    myView:state.login.myView,
+  return {
+    myView: state.login.myView,
     forbiddenView: state.login.forbiddenView
-   }
+  }
 
 }
 

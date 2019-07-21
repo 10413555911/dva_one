@@ -54,7 +54,7 @@ export default {
         // 1.设置cookie
         setToken(data.token)
       }
-      yield put({                       //put是等于调用同步里面的方法  
+      yield put({                     //put是等于调用同步里面的方法  
         type: 'updataLogin',          //等于同步里面的函数名
         payload: data.code            //这个是走了上面然后调用了updataLogin的值 在log页面进行了修改  成功改变为1 不成功为0
       })
@@ -73,7 +73,7 @@ export default {
         payload: data
       })
       let quanxian = yield authority()
-      console.log(quanxian)
+      console.log(quanxian.data,"11111111111111")
       yield put({
         type: 'updateViewAuthority',
         payload: quanxian.data
@@ -100,7 +100,6 @@ export default {
           }
         })
       })
-      console.log(myView, forbiddenView)
       return { ...state, myView, forbiddenView };
     }
   },
