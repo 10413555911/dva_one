@@ -26,8 +26,16 @@ function IndexPage(props) {
         return "添加用户";
       case "/index/showUser":
         return "用户展示";
-      case "/index/details":
-        return "试题详情";
+      case "/index/addExam":
+        return "添加考试";
+      case "/index/examList":
+        return "考试列表";
+      case "/index/addClass":
+        return "班级管理";
+      case "/index/addroom":
+        return "班级管理";  
+      case "/index/studentment":
+        return "学生管理";
       case "/index/compile":
         return "编辑"
       default:

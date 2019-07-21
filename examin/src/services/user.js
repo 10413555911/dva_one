@@ -53,6 +53,9 @@ export function authorityView(params) {
 export function setIdentityApi(params) {
     return request.post("/user/setIdentityApi", params)
 }
+export function setIdentityView(params){
+    return request.post("/user/setIdentityView",params)
+}
 //gengz 
 export function changeImg(params) {
     return request.post('http://123.206.55.50:11000/upload', params)
