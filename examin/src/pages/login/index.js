@@ -6,11 +6,7 @@ function Login(props) {
   //调用ant里面的高阶组件
   const { getFieldDecorator } = props.form;
   //模拟componentDidmont
-  // useEffect(() => {     //直接登录成功
-  //   props.login({ user_name: 'chenmanjie', user_pwd: 'Chenmanjie123!' })
-  // }, [])
   useEffect(() => {
-    console.log(props)
     if (props.isLogin === 1) {
       message.success('登陆成功');
       props.history.push('/index')
@@ -22,7 +18,6 @@ function Login(props) {
     props.form.validateFields((err, values) => {
       if (!err) {
         props.login({ user_name: values.username, user_pwd: values.password })
-        console.log('Received values of form: ', values);
       }
     });
   };
