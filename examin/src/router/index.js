@@ -12,6 +12,7 @@ import studentment from '../pages/index/class/studentMent/studentMent'
 import details from '../pages/index/questions/watchQuestions/details/details'
 import compile from '../pages/index/questions/watchQuestions/compile/compile'
 import Details_texts from '../pages/index/examination/addExam/examDetails/examDetails'
+import approvalclass from '../pages/index/Marking/approvalclass/approval'
 const router = [
     {
         type: "试题管理",
@@ -135,10 +136,17 @@ const router = [
         id: "router.examination",
         children: [
             {
-                path: "/index/administration",
-                component: administration,
+                path: "/index/approval",
+                component: approvalclass,
                 id: "router.examination.awat",
                 title: "阅卷管理",
+                view_id: "main-examPaperClassList"
+            },
+            {
+                path: "/index/administration",
+                component: administration,
+                id: "",
+                title: "",
                 view_id: "main-examPaperClassmate"
             }
 

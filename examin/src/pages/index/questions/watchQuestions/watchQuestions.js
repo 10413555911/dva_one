@@ -104,7 +104,7 @@ let mapdispatchToProps = dispatch => {
     return {
         subjectDate: () => {
             dispatch({
-                type: 'subject/subject',
+                type: 'subject/subJect',
             })
         },
         examType: () => {
