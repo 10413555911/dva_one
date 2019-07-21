@@ -15,10 +15,10 @@ function MenuList(props) {
     <Menu theme="dark" mode="inline" defaultSelectedKeys={["sub1"]}>
       {
         router.map((item, i) =>
-          <SubMenu key={i} title={<span><Icon type="team" /><span>{props.intl.formatMessage({ id: item.id })}</span></span>}>
+          <SubMenu key={`sub${i}`} title={<span><Icon type="team" /><span>{props.intl.formatMessage({ id: item.id })}</span></span>}>
             {
               item.children.map((item, i) => {
-                return <Menu.Item key={i}><NavLink to={item.path}>{props.intl.formatMessage({ id: item.id })}</NavLink></Menu.Item>
+                return <Menu.Item key={item.path}><NavLink to={item.path}>{props.intl.formatMessage({ id: item.id })}</NavLink></Menu.Item>
               }
               )
             }
