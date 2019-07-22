@@ -1,19 +1,19 @@
-import React,{useEffect,useState} from "react"
-import {connect} from "dva"
-import {Table,Tabs,Button} from 'antd';
+import React, { useEffect, useState } from "react"
+import { connect } from "dva"
+import { Table, Tabs, Button } from 'antd';
 import style from './showuser.scss'
 const { TabPane } = Tabs;
-function showuser(props){
-    const [loading]=useState(false)
-    useEffect(()=>{
-       props.getUserdata()
-       props.getidentity()
-       props.api_authority()
-       props.api_authority_relation()
-       props.view_authority()
-       props.view_authority_relation()
-    },[])
-    const {userlist,identitylist,apilist,api_identity,viewdata,view_identity}=props;
+function showuser(props) {
+    const [loading] = useState(false)
+    useEffect(() => {
+        props.getUserdata()
+        props.getidentity()
+        props.api_authority()
+        props.api_authority_relation()
+        props.view_authority()
+        props.view_authority_relation()
+    }, [])
+    const { userlist, identitylist, apilist, api_identity, viewdata, view_identity } = props;
 
 
     const columns = [
@@ -93,33 +93,33 @@ function showuser(props){
             dataIndex: 'view_id',
         }
     ];
-    return(
+    return (
         <div className={style.show_wrap}>
             <div>
                 <Tabs defaultActiveKey="1" animated={false} type="card">
                     <TabPane tab={<Button className={style.btn} value="用户数据">用户数据</Button>} key="1">
-                       <h2>用户数据</h2>
-                       <Table loading={loading} columns={columns} rowKey="user_id" dataSource={userlist&&userlist} />
+                        <h2>用户数据</h2>
+                        <Table loading={loading} columns={columns} rowKey="user_id" dataSource={userlist && userlist} />
                     </TabPane>
                     <TabPane tab={<Button className={style.btn} value="身份数据">身份数据</Button>} key="2">
-                       <h2>身份数据</h2>
-                       <Table columns={identitycolumns}  dataSource={identitylist&&identitylist} />
+                        <h2>身份数据</h2>
+                        <Table columns={identitycolumns} dataSource={identitylist && identitylist} />
                     </TabPane>
                     <TabPane tab={<Button className={style.btn} value="api接口权限">api接口权限</Button>} key="3">
-                       <h2>api接口权限</h2>
-                       <Table columns={apiauthoritycolumns}  dataSource={apilist&&apilist} />
+                        <h2>api接口权限</h2>
+                        <Table columns={apiauthoritycolumns} dataSource={apilist && apilist} />
                     </TabPane>
-                    <TabPane tab={<Button  className={style.btn} value="身份和api接口关系">身份和api接口关系</Button>} key="4">
-                       <h2>身份和api接口关系</h2>
-                       <Table columns={apiIdentitycolumns}  dataSource={api_identity&&api_identity} />
+                    <TabPane tab={<Button className={style.btn} value="身份和api接口关系">身份和api接口关系</Button>} key="4">
+                        <h2>身份和api接口关系</h2>
+                        <Table columns={apiIdentitycolumns} dataSource={api_identity && api_identity} />
                     </TabPane>
                     <TabPane tab={<Button className={style.btn} value="视图接口权限">视图接口权限</Button>} key="5">
-                       <h2>视图接口权限</h2>
-                       <Table columns={viewcolumns}  dataSource={viewdata&&viewdata} />
+                        <h2>视图接口权限</h2>
+                        <Table columns={viewcolumns} dataSource={viewdata && viewdata} />
                     </TabPane>
                     <TabPane tab={<Button className={style.btn} value="身份和视图权限关系">身份和视图权限关系</Button>} key="6">
-                       <h2>身份和视图权限关系</h2>
-                       <Table columns={viewauthoritycolumns}  dataSource={view_identity&&view_identity} />
+                        <h2>身份和视图权限关系</h2>
+                        <Table columns={viewauthoritycolumns} dataSource={view_identity && view_identity} />
                     </TabPane>
                 </Tabs>
                 {/* */}
@@ -127,43 +127,43 @@ function showuser(props){
         </div>
     )
 }
-const mapStateToProp=state=>{
-    return{
+const mapStateToProp = state => {
+    return {
         ...state.user
     }
 }
-const mapDispatchToProp=dispatch=>{
-    return{
-       getUserdata:()=>{
-           dispatch({
-               type:"user/getUserdata"
-           })
-       },
-       getidentity:()=>{
-           dispatch({
-            type:"user/getidentity"
-           })
-       },
-       api_authority:()=>{
-           dispatch({
-               type:"user/api_authority"
-           })
-       },
-       api_authority_relation:()=>{
-           dispatch({
-               type:"user/api_authority_relation"
-           })
-       },
-       view_authority:()=>{
-           dispatch({
-               type:"user/view_authority"
-           })
-       },
-       view_authority_relation:()=>{
-           dispatch({
-               type:"user/view_authority_relation"
-           })
-       }
+const mapDispatchToProp = dispatch => {
+    return {
+        getUserdata: () => {
+            dispatch({
+                type: "user/getUserdata"
+            })
+        },
+        getidentity: () => {
+            dispatch({
+                type: "user/getidentity"
+            })
+        },
+        api_authority: () => {
+            dispatch({
+                type: "user/api_authority"
+            })
+        },
+        api_authority_relation: () => {
+            dispatch({
+                type: "user/api_authority_relation"
+            })
+        },
+        view_authority: () => {
+            dispatch({
+                type: "user/view_authority"
+            })
+        },
+        view_authority_relation: () => {
+            dispatch({
+                type: "user/view_authority_relation"
+            })
+        }
     }
 }
-export default connect(mapStateToProp,mapDispatchToProp)(showuser);
+export default connect(mapStateToProp, mapDispatchToProp)(showuser);
