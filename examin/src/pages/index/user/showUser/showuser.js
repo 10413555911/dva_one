@@ -12,13 +12,10 @@ function showuser(props){
        props.api_authority_relation()
        props.view_authority()
        props.view_authority_relation()
-       //setloading(true)
     },[])
     const {userlist,identitylist,apilist,api_identity,viewdata,view_identity}=props;
-    const [uid,setuId]=useState("");
-    let handleFormLayoutChange = e => {
-        setuId(e.target.value)
-    };
+
+
     const columns = [
         {
             title: '用户名',

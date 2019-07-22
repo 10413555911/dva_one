@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'dva';
 import styles from './examDetails.scss';
-import { Form, Drawer, Select, Button } from 'antd';
-const { Option } = Select;
+import { Form, Drawer, Button } from 'antd';
 function examDetails(props) {
     let { Allquestion } = props
     if (Allquestion) {

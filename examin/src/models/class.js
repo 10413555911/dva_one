@@ -64,7 +64,7 @@ export default {
       })
     },
     *DelRoom({ payload }, { call, put }) {   //删除教室
-      let data = yield call(DelRoom, payload)
+      yield call(DelRoom, payload)
       yield put({
         type: 'addroom',
       })

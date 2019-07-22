@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import styles from './details.scss';
 import ReactMarkdown from 'react-markdown';
 function details(props) {
-    let { Objs,All } = props
+    let {All } = props
     useEffect(()=>{
        props.data({questions_id:props.location.search.split('=')[1]})    //调用查看试题的接口
     },[])

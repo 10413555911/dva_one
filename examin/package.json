@@ -13,7 +13,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-intl": "^2.9.0",
-    "react-markdown": "^4.1.0"
+    "react-markdown": "^4.1.0",
+    "xlsx": "^0.14.4"
   },
   "devDependencies": {
     "antd": "^3.20.1",
