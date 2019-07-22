@@ -36,7 +36,7 @@ class Tables6 extends React.Component {
         })
     }
     render() {
-        const { identitylist, apilist } = this.props
+        const { identitylist,apilist} = this.props
         const { getFieldDecorator } = this.props.form;
         return (
             <React.Fragment>

@@ -25,8 +25,6 @@ function IndexPage(props) {
         return "添加用户";
       case "/index/showUser":
         return "用户展示";
-      case "/index/details":
-        return "试题详情";
       case "/index/compile":
         return "编辑"
       default:
