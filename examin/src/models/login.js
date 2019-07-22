@@ -1,4 +1,4 @@
-import { login, getUserInfo, authority } from '../services/index'
+import { login, getUser, authority } from '../services/index'
 import { routerRedux } from 'dva/router';
 import { setToken, getToken } from '@/utils/index'
 import allAuthority from '../router/index'   //路由的表
@@ -39,7 +39,7 @@ export default {
         }
         if (getToken()) {
           dispatch({
-            type: "login/getUserInfo"
+            type: "getUser"
           })
         }
 
@@ -59,14 +59,14 @@ export default {
         payload: data.code            //这个是走了上面然后调用了updataLogin的值 在log页面进行了修改  成功改变为1 不成功为0
       })
     },
-    *getUserInfo({ payload, type }, { call, put, select }) {
+    *getUser({ payload, type }, { call, put, select }) {
       //1.判断用户是否已经获取到用户
       let userInfo = yield select(state => state.login.userInfo)
       if (Object.keys(userInfo).length) {
         return;
       }
       //2.获取到用户信息
-      let data = yield getUserInfo();
+      let data = yield getUser();
       localStorage.setItem("userInfo", JSON.stringify(data.data))
       yield put({
         type: "updataUserInfo",

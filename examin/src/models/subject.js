@@ -70,7 +70,7 @@ export default {
         //添加试题
         *questions({ payload }, { call, put }) {
             let data = yield call(questions, payload)
-           
+           console.log(data)
         },
         //获取所有的试题
         *allQuestions({ payload }, { call, put }) {

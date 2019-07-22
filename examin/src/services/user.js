@@ -1,6 +1,6 @@
 import request from "../utils/request"
 //用户管理
-export function getUserInfo() {
+export function getUser() {
     return request.get("/user/userInfo")
 }
 //更新用户

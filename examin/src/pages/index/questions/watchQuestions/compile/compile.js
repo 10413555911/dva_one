@@ -6,7 +6,7 @@ import Editor from 'for-editor';
 const { Option } = Select;
 function compile(props) {
   const { getFieldDecorator } = props.form;
-  let { examTypeDate, subjectDataType, TypeList, userIds, All } = props
+  let { examTypeDate, subjectDataType, TypeList,  All } = props
   useEffect(() => {
     props.examType()
     props.subject()
@@ -15,9 +15,7 @@ function compile(props) {
     props.data({ questions_id: props.location.search.split('=')[1] })
   }, []);
   const [visibles, showVisible] = useState(false)
-  function submit() {
-    handleSubmit()
-  }
+
   let handleSubmit = (e) => {
     props.form.validateFields((err, values) => {
       props.update({

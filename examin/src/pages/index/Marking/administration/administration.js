@@ -51,7 +51,7 @@ function administration(props) {
     let nextMarking = (item) => {
         props.history.push('/home/marking?id=' + item.exam_student_id)
     }
-    let id = props.location.search.split("&&")[0].split("=")[1]
+    // let id = props.location.search.split("&&")[0].split("=")[1]
     return (
 
         <div className={styles.wrap}>

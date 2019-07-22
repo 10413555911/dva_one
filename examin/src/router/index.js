@@ -118,7 +118,7 @@ const router = [
                 path: "/index/addroom",
                 component: addroom,
                 id: "router.class.addlist",
-                title: "教室管理",
+                title: "添加考试",
                 view_id: "main-room"
 
             },

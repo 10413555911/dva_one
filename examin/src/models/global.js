@@ -4,7 +4,7 @@ export default {
     namespace: 'global',
   
     state: {
-        locale:navigator.language.indexOf("zh")!=-1 ?"zh":"en"
+        locale:navigator.language.indexOf("zh")!==-1 ?"zh":"en"
     },
   
     reducers: {

@@ -15,7 +15,7 @@ function MenuList(props) {
           <SubMenu key={i} title={<span><Icon type="team" /><span>{props.intl.formatMessage({ id: item.id })}</span></span>}>
             {
               item.children.map((item, i) => {
-                return item.id?<Menu.Item key={i}><NavLink to={item.path}>{props.intl.formatMessage({ id: item.id })}</NavLink></Menu.Item>:null
+                return item.id?<Menu.Item key={item.view_id}><NavLink to={item.path}>{props.intl.formatMessage({ id: item.id })}</NavLink></Menu.Item>:null
               }
               )
             }
