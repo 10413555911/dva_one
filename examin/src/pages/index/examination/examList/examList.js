@@ -6,7 +6,6 @@ const { Option } = Select;
 const ButtonGroup = Button.Group;
 function examList(props) {
   let { examTypeDate, TypeList, obj } = props
-  console.log(obj)
   useEffect(() => {
     props.examType()
     props.subject()
@@ -28,7 +27,6 @@ function examList(props) {
     return hours + ":" + minutes + ":" + seconds;
   }
   function Tochild(item) {
-    console.log(item)
   }
   const columns = [
     {
