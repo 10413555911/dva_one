@@ -5,10 +5,8 @@ import { Select, Modal, Form, Input } from "antd";
 const { Option } = Select;
 function headers(props) {
   let { img } = props
-  // console.log(img)
   const [userInfo, getuserInfo] = useState({})
   useEffect(() => {
-    //props.updataUser()
     getuserInfo(props.userInfo.data)
   }, [props.userInfo])//可以设置监听
   let handleProvinceChange = value => {

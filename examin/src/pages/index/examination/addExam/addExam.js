@@ -5,7 +5,6 @@ import { Form, InputNumber, Input, Select, DatePicker, Button } from 'antd';
 const { Option } = Select;
 function addExam(props) {
   let { examTypeDate, TypeList } = props
-  console.log(TypeList)
   const { getFieldDecorator } = props.form; //高阶组价方法
   useEffect(() => {
     props.examType()   //考试类型

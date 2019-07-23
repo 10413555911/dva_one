@@ -7,12 +7,10 @@ export function setToken(val) {
     date.setTime(expires);
     Cookie.set(key, val, { expires: date })
 }
-
 // 读取cookie
 export function getToken() {
     return Cookie.get(key)
 }
-
 // 删除cookie
 export function removeToken() {
     Cookie.remove(key)

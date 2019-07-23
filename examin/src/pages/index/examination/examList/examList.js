@@ -6,7 +6,6 @@ const { Option } = Select;
 const ButtonGroup = Button.Group;
 function examList(props) {
   let { examTypeDate, TypeList, obj } = props
-  console.log(obj)
   useEffect(() => {
     props.examType()
     props.subject()
@@ -28,7 +27,6 @@ function examList(props) {
     return hours + ":" + minutes + ":" + seconds;
   }
   function Tochild(item) {
-    console.log(item)
   }
   const columns = [
     {
@@ -89,8 +87,8 @@ function examList(props) {
             <span>考试类型:</span>
             <Select style={{ width: '60%', marginLeft: '20px' }} >
               {
-                examTypeDate && examTypeDate.map((item,id) => {
-                  return <Option key={id}   rowKey={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
+                examTypeDate && examTypeDate.map((item, id) => {
+                  return <Option key={id} value={item.exam_id}>{item.exam_name}</Option>
                 }
                 )
               }
@@ -100,7 +98,7 @@ function examList(props) {
             <span>课程:</span>
             <Select style={{ width: '60%', marginLeft: '20px' }}>
               {
-                TypeList && TypeList.map((item,i) => {
+                TypeList && TypeList.map((item, i) => {
                   return <Option key={i} value={item.subject_id}>{item.subject_text}</Option>
                 }
                 )

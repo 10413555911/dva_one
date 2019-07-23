@@ -27,10 +27,6 @@ function questionsType(props) {
         //导出 workBook
         XLSX.writeFile(wb, '12321.xlsb')
     }
-
-
-
-
     const columns = [
         {
             title: '类型ID',

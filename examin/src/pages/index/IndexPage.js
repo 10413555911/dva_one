@@ -27,6 +27,22 @@ function IndexPage(props) {
         return "用户展示";
       case "/index/compile":
         return "编辑"
+      case "/index/approval":
+        return "待批班级"
+      case "/index/studentment":
+        return "学生管理"
+      case "/index/addroom":
+        return "添加试卷"
+      case "/index/addClass":
+        return "班级管理"
+      case "/index/addExam":
+        return "添加考试"
+      case "/index/examList":
+        return "考试列表"
+      case "/index/administration":
+        return "批卷"
+      case "/index/Details_texts":
+        return "详情"
       default:
         return "试题详情"
     }

@@ -48,3 +48,33 @@
   display: flex;
   flex-direction: column;
 }
+.btns {
+  width: 95%;
+  padding: 0;
+  font-size: 10px;
+  span {
+    padding: 3px 5px;
+    margin-left: 5px;
+  }
+  span:nth-child(1) {
+    margin-left: -4px;
+  }
+}
+.actiov {
+  background: blue;
+  color: #ffff;
+}
+.ct {
+  height: 100%;
+  width: 100%;
+}
+.st_list {
+  .ant_list {
+    margin-top: 3px;
+    padding: 2px;
+    border: 1px solid #ccc;
+  }
+}
+.fb {
+  color: skyblue;
+}
