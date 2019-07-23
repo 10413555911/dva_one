@@ -1,7 +1,7 @@
 # 前言
 
 [README in English](README-en.md)
-这是考试管理平台
+考试管理平台 ！！！
 
 
 
@@ -18,7 +18,7 @@ git clone https://github.com/10413555911/dva_one/tree/gz 
 
 npm install 或 yarn(推荐)
 
-npm run dev 或 npm start
+npm run start 或 yarn start
 
 ```
 ## 关于接口数据
@@ -27,7 +27,7 @@ npm run dev 或 npm start
 
 如果想体验前后台同时开发，可以下载后台系统。
 
-此时启动本项目的命令为：npm start。
+此时启动本项目的命令为：yarn start。
 
 
 # 说明
