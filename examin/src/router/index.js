@@ -1,18 +1,58 @@
-import addQuestions from "../pages/index/questions/addQuestions/addQuestions"
-import questionsType from "../pages/index/questions/questionsType/questionsType"
-import watchQuestions from "../pages/index/questions/watchQuestions/watchQuestions"
-import addUser from "../pages/index/user/addUser/adduser"
-import showUser from "../pages/index/user/showUser/showuser"
-import addClass from '../pages/index/class/classman/classman'
-import addroom from '../pages/index/class/addroom/addroom'
-import examList from '../pages/index/examination/examList/examList'
-import administration from '../pages/index/Marking/administration/administration'
-import addExam from '../pages/index/examination/addExam/addExam'
-import studentment from '../pages/index/class/studentMent/studentMent'
-import details from '../pages/index/questions/watchQuestions/details/details'
-import compile from '../pages/index/questions/watchQuestions/compile/compile'
-import Details_texts from '../pages/index/examination/addExam/examDetails/examDetails'
-import approvalclass from '../pages/index/Marking/approvalclass/approval'
+
+import dynamic from 'dva/dynamic';
+
+const addQuestions = dynamic({
+    component: () => import('../pages/index/questions/addQuestions/addQuestions'),
+});
+const questionsType = dynamic({
+    component: () => import('../pages/index/questions/questionsType/questionsType'),
+});
+const watchQuestions = dynamic({
+    component: () => import('../pages/index/questions/watchQuestions/watchQuestions'),
+});
+const addUser = dynamic({
+    component: () => import('../pages/index/user/addUser/adduser'),
+});
+
+const showUser = dynamic({
+    component: () => import('../pages/index/user/showUser/showuser'),
+});
+
+const addClass = dynamic({
+    component: () => import('../pages/index/class/classman/classman'),
+});
+
+const addroom = dynamic({
+    component: () => import('../pages/index/class/addroom/addroom'),
+});
+const examList = dynamic({
+    component: () => import('../pages/index/examination/examList/examList'),
+});
+
+const administration = dynamic({
+    component: () => import('../pages/index/Marking/administration/administration'),
+});
+
+const addExam = dynamic({
+    component: () => import('../pages/index/examination/addExam/addExam'),
+});
+
+const studentment = dynamic({
+    component: () => import('../pages/index/class/studentMent/studentMent'),
+});
+
+const details = dynamic({
+    component: () => import('../pages/index/questions/watchQuestions/details/details'),
+});
+const compile = dynamic({
+    component: () => import('../pages/index/questions/watchQuestions/compile/compile'),
+});
+const Details_texts = dynamic({
+    component: () => import('../pages/index/examination/addExam/examDetails/examDetails'),
+});
+const approvalclass = dynamic({
+    component: () => import('../pages/index/Marking/approvalclass/approval'),
+});
 const router = [
     {
         type: "试题管理",
@@ -141,7 +181,8 @@ const router = [
                 id: "router.examination.awat",
                 title: "阅卷管理",
                 view_id: "main-examPaperClassList"
-            },
+            }
+            ,
             {
                 path: "/index/administration",
                 component: administration,
