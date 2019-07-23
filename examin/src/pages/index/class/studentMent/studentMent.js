@@ -5,7 +5,6 @@ import { Form, Input, Select, Button, Table } from 'antd'
 const { Option } = Select
 function Student(props) {
     const { addRoom, AllClass_name } = props
-    console.log(AllClass_name)
     const columns = [
         {
             title: '姓名',
