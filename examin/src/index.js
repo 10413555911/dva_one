@@ -1,6 +1,5 @@
 import dva from 'dva';
 import './index.scss';
-import 'antd/dist/antd.css';
 // 1. Initialize
 const app = dva();
 
