@@ -20,6 +20,12 @@ function headers(props) {
     updateFlag(true)
   }
   let handleOk = () => {
+    props.form.validateFields((err, values) => {
+      props.updataUser({
+        avatar: img,
+        user_id: values.userId,
+      })
+    })
     updateFlag(false)
   }
   let handleCancel = () => {

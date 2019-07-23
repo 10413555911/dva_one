@@ -23,8 +23,11 @@ class Tables6 extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             console.log(values.apiname)
-            if (values.apiname !== "" && values.apiurl !== "" && values.apifn !== "") {
-
+            if (values.examid !== "" && values.viewqx !== "") {
+                this.props.setIdentityView({
+                    identity_id:values.examid,
+                    view_authority_id:values.viewqx
+                })
             }
         })
     }
@@ -33,10 +36,10 @@ class Tables6 extends React.Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <React.Fragment>
-                 <Button>给身份设定视图权限</Button>
+                 <Button>给身份设置视图权限</Button>
                 <Form>
                     <Form.Item>
-                        {getFieldDecorator('exam_id', {
+                        {getFieldDecorator('examid', {
                             rules: [{ required: true, message: "id类型必选" }],
                             initialValue: "请选择身份id"
                             })(
@@ -50,7 +53,7 @@ class Tables6 extends React.Component {
                             )}
                     </Form.Item>
                     <Form.Item>
-                        {getFieldDecorator('exam_id', {
+                        {getFieldDecorator('viewqx', {
                             rules: [{ required: true, message: "id类型必选" }],
                             initialValue: "请选择视图权限id"
                             })(
@@ -67,6 +70,7 @@ class Tables6 extends React.Component {
                         <Form.Item>
                             <Button
                                 type="primary"
+                                htmlType="submit"
                                 loading={this.state.iconLoading}
                                 className={style.sub_btn}
                                 >
@@ -109,6 +113,12 @@ const mapDispatchToProp = dispatch => {
         api_authority: () => {
             dispatch({
                 type: "user/api_authority"
+            })
+        },
+        setIdentityView:(payload)=>{
+            dispatch({
+                type:"user/setIdentityView",
+                payload
             })
         }
     }

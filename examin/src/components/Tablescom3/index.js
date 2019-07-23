@@ -34,7 +34,7 @@ class Tables3 extends React.Component {
         const { getFieldDecorator } =this.props.form;
         return (
             <React.Fragment>
-                <Button>添加api接口权限</Button>
+                <Button>添加API接口权限</Button>
                 <Form onSubmit={(e)=>this.handleSubmit(e)}>
                     <Form.Item>
                         {getFieldDecorator('apiname', {

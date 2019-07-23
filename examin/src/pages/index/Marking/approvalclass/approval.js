@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "dva";
 import styles from "./approval.scss";
 import { Table } from "antd";
 import Cookie from "js-cookie";
 function paper(props) {
     const { AllClass_name } = props
+    console.log(AllClass_name)
     useEffect(() => {
         props.manger();
-
     }, []);
     const columns = [
         {
