@@ -96,6 +96,7 @@ function showuser(props) {
     return (
         <div className={style.show_wrap}>
             <div>
+                <input type="file" placeholder="上传Excle"/>
                 <Tabs defaultActiveKey="1" animated={false} type="card">
                     <TabPane tab={<Button className={style.btn} value="用户数据">用户数据</Button>} key="1">
                         <h2>用户数据</h2>

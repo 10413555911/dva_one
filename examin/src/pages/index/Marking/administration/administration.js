@@ -9,6 +9,7 @@ function administration(props) {
     const columns = [
         {
             title: '班级',
+            dataIndex: '8tl7os-r49tld',
             // render: ()=><span>{name}</span>,
             key: '1',
         },
@@ -19,7 +20,7 @@ function administration(props) {
         },
         {
             title: '阅卷状态',
-            dataIndex: `status === 0: '未阅'? '已阅'`,
+            dataIndex:'status',
             key: '3',
         },
         {
@@ -44,10 +45,12 @@ function administration(props) {
         }
     ];
     useEffect(() => {
-
-        //props.getStudentData()
+        props.getstudent()
 
     }, [])
+    console.log("props...",props)
+    const {studentAll}=props
+    console.log(studentAll.exam)
     let nextMarking = (item) => {
         props.history.push('/home/marking?id=' + item.exam_student_id)
     }
@@ -79,7 +82,7 @@ function administration(props) {
                 </Form>
                 <div className={styles.cont}>
                     <h4>试题列表</h4>
-                    <Table columns={(columns)} dataSource={null} />
+                    <Table columns={columns} dataSource={studentAll.exam} rowKey="exam_student_id"/>
                 </div>
             </div>
         </div>
@@ -90,12 +93,17 @@ administration.propTypes = {
 };
 const mapStateToProps = state => {
     return {
-        ...state
+        ...state.student
     }
 }
 const mapDispachToProps = dispatch => {
     return {
-
+        getstudent:(payload)=>{
+            dispatch({
+                type:"student/getstudent",
+                payload
+            })
+        }
     }
 }
 export default connect(mapStateToProps, mapDispachToProps)(Form.create()(administration));

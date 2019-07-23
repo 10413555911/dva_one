@@ -53,9 +53,6 @@ const Details_texts = dynamic({
 const approvalclass = dynamic({
     component: () => import('../pages/index/Marking/approvalclass/approval'),
 });
-
-
-
 const router = [
     {
         type: "试题管理",
@@ -184,7 +181,8 @@ const router = [
                 id: "router.examination.awat",
                 title: "阅卷管理",
                 view_id: "main-examPaperClassList"
-            },
+            }
+            ,
             {
                 path: "/index/administration",
                 component: administration,

@@ -11,6 +11,8 @@ import {
   authorityApi,
   authorityView,
   setIdentityApi,
+  setIdentityView,
+  //gz
   changeImg,
 } from "../services/user"
 export default {
@@ -96,8 +98,16 @@ export default {
     },
     *setIdentityApi({ payload }, { call, put }) {
       let data = yield call(setIdentityApi, payload);
+      console.log("103...",data)
       yield put({
         type: "setIdApi",
+        payload: data
+      })
+    },
+    *setIdentityView({ payload }, { call, put }){
+      let data = yield call(setIdentityView, payload);
+      yield put({
+        type: "setIdView",
         payload: data
       })
     },
@@ -153,6 +163,7 @@ export default {
       return { ...state, payload }
     },
     setIdApi(state, { payload }) {
+      console.log("160...",payload)
       return { ...state, payload }
     },
     updatauser(state, { payload }) {

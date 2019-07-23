@@ -2,8 +2,6 @@ import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import IndexPage from './pages/index/IndexPage';
 import Login from './pages/login/index'
-
-
 import { IntlProvider, addLocaleData } from "react-intl"
 import en from "react-intl/locale-data/en"
 import zh from "react-intl/locale-data/zh";

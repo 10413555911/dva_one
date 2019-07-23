@@ -7,7 +7,7 @@ const service = axios.create({
   timeout: 5000 // request timeout
 })
 service.interceptors.request.use(
-  config => {
+  config => {  
     // 判断是否有登陆态
     if (getToken()) {
       // 让每个请求携带authorization

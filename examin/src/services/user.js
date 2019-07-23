@@ -1,6 +1,6 @@
 import request from "../utils/request"
 //用户管理
-export function getUser() {
+export function getUser(){
     return request.get("/user/userInfo")
 }
 //更新用户
@@ -52,6 +52,9 @@ export function authorityView(params) {
 //给视图设定身份接口权限
 export function setIdentityApi(params) {
     return request.post("/user/setIdentityApi", params)
+}
+export function setIdentityView(params){
+    return request.post("/user/setIdentityView",params)
 }
 //gengz 
 export function changeImg(params) {

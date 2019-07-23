@@ -27,11 +27,11 @@ class Tables6 extends React.Component {
                 api_authority_id:values.viewid
             })
             if (values.Identityid !== "" && values.viewid !== "") {
-                let mag=this.props.setIdentityApi({
+                this.props.setIdentityApi({
                     identity_id:values.Identityid,
                     api_authority_id:values.viewid
                 })
-                console.log(mag)
+                //console.log(mag)
             }
         })
     }
@@ -40,7 +40,7 @@ class Tables6 extends React.Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <React.Fragment>
-                 <Button>给身份设定视图权限</Button>
+                 <Button>给身份设置API接口权限</Button>
                   <Form onSubmit={(e)=>this.handleSubmit(e)}>
                     <Form.Item>
                         {getFieldDecorator('Identityid', {

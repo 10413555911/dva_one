@@ -67,7 +67,6 @@ export default {
       }
       //2.获取到用户信息
       let data = yield getUser();
-      localStorage.setItem("userInfo", JSON.stringify(data.data))
       yield put({
         type: "updataUserInfo",
         payload: data
