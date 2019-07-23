@@ -1,8 +1,8 @@
 # 前言
 
 [README in English](README-en.md)
-这是考试管理平台的一个app
-使用户体验更上了一个层次。
+这是考试管理平台
+
 
 
 ## 技术栈
@@ -14,7 +14,7 @@ dva + react +  webpack + ES6  + sass + flex
 
 
 ```
-git clone https://github.com/10413555911/Starback--Gz.git  
+git clone https://github.com/10413555911/dva_one/tree/gz 
 
 npm install 或 yarn(推荐)
 
@@ -72,7 +72,7 @@ npm run dev 或 npm start
     2.component下放全局的组件并在main.js下使用component用。
     3.router下放所有的路由也是为了方便统一管理
     4.static放置所有的静态资源的地方
-    5.store放置的是vuex，也是仓库方便组件之间的传值。
+    5.store放置的是react，也是仓库方便组件之间的传值。
     6.utils这个目录里面放置的是工具，统一放置统一管理。
     7.views放置的是所有的页面。
     8.plugins放置所有的插件

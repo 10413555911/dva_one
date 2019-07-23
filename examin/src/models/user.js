@@ -27,13 +27,11 @@ export default {
     img: ''
 
   },
-
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
 
     },
   },
-
   effects: {
     //用户数据
     *getUserdata({ payload }, { call, put }) {
