@@ -73,7 +73,6 @@ export default {
         payload: data
       })
       let quanxian = yield authority()
-      console.log(quanxian.data,"11111111111111")
       yield put({
         type: 'updateViewAuthority',
         payload: quanxian.data

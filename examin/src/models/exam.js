@@ -15,8 +15,8 @@ export default {
       })
     },
     *del({ payload }, { call, put }) {  //删除试卷的接口
-      let data = yield del(payload)
-      console.log(data)
+      yield del(payload)
+
 
     },
     *examList({ payload }, { call, put }) {//获取试卷列表

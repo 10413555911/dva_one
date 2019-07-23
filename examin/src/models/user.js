@@ -11,7 +11,6 @@ import {
   authorityApi,
   authorityView,
   setIdentityApi,
-  //gz
   changeImg,
 } from "../services/user"
 export default {
@@ -23,7 +22,6 @@ export default {
     api_identity: [],//展示身份和api权限关系
     viewdata: [],//展示视图权限数据
     view_identity: [],//展示身份和视图权限数据
-    //gz
     img: ''
 
   },
